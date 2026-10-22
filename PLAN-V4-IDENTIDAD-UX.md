@@ -1,6 +1,6 @@
 # FA App Studio — Plan maestro V4 de marca, UX/UI y arquitectura web
 
-**Estado:** EN EJECUCIÓN · ambas páginas V4 publicadas, Node 54/54 y Lighthouse móvil/escritorio ejecutados. Avance ponderado 85,5 %. Falta aprobación visual y pruebas manuales.  
+**Estado:** EN EJECUCIÓN · ambas webs V4 publicadas, Node 54/54, Chrome 50/50 y Lighthouse móvil/escritorio verificados. Avance 88,5 %. Pendiente aprobación visual y pruebas manuales de accesibilidad.  
 **Fecha de auditoría:** 22 de octubre de 2026  
 **Repositorio:** `faappstudio/faappstudio.github.io`, rama `main`  
 **Alcance:** página corporativa, landing de Radio México de Siempre, sistema visual, textos, accesibilidad, rendimiento, SEO, medición y release.  
@@ -32,10 +32,11 @@
 
 ## Avance operativo actualizado — 22 de octubre de 2026
 
-**85,5 % (~86 %) de avance; 14,5 % restante**, calculado con los pesos de las siete fases. Ver [reporte de QA y métricas](V4-ESTADO-QA-2026-10-22.md).
+**88,5 % (~89 %) de avance; 11,5 % restante**, calculado con los pesos de las siete fases. Ver [reporte de QA y métricas](V4-ESTADO-QA-2026-10-22.md).
 
 **Resultados comprobados:**
 - Node.js 22 sobre `main` en GitHub Actions: **28/28 controles estructurales + 26/26 pruebas de comportamiento**, flujo exitoso [V4 Quality Checks](https://github.com/faappstudio/faappstudio.github.io/actions/runs/39871406053).
+- Chrome real ejecutó **50/50 comprobaciones funcionales sin capturas** en 360 px, 390 px, modo escritorio vertical de 980 px y escritorio de 1440 px. Comprobó CTA, popup, geometría 9:16 del Reel, falta de espacios vacíos, cierre con Escape, foco y campañas ([flujo aprobado](https://github.com/faappstudio/faappstudio.github.io/actions/runs/39872019024)).
 - Lighthouse sobre las dos páginas: Radio México obtuvo 100 en rendimiento/accesibilidad/buenas prácticas/SEO tanto en móvil como en escritorio; FA App Studio obtuvo inicialmente 95 de accesibilidad en ambos.
 - Identificados **dos fallos de contraste** en FA App Studio, corregidos con colores más oscuros; segunda auditoría Lighthouse verificó **100 de accesibilidad** y rendimiento de 99 móvil/100 escritorio, con SEO y buenas prácticas 100 ([ver prueba posterior](https://github.com/faappstudio/faappstudio.github.io/actions/runs/39871320280)).
 - Lighthouse es laboratorio automático: **no certifica WCAG completa ni mide INP real**. No sustituye las decisiones de diseño ni la validación visual del propietario.
@@ -323,10 +324,10 @@ La primera entrega debe ser **copywriting + diseño base** antes de programar ot
 - [x] F1: Primera pasada completa del copy V4 aplicada en ambos sitios; pendiente aprobación editorial del propietario.
 - [ ] F2: Dos direcciones creativas comparadas por marca.
 - [x] F2: Identidades y sistemas CSS V4 separados implementados para estudio y radio; pendientes ajustes de validación visual.
-- [ ] F3: Página corporativa publicada, Lighthouse verificado; falta aprobación visual.
-- [ ] F4: Página Radio publicada, Lighthouse 100/100 en cuatro categorías; falta aprobación visual.
+- [ ] F3: Página corporativa publicada, Lighthouse y Chrome real aprobados; falta aprobación visual.
+- [ ] F4: Página Radio publicada, Lighthouse 100/100 y prueba de Reel en Chrome real aprobados; falta aprobación visual.
 - [x] F4: Estructura y cadenas Reel/modal/WhatsApp/Play protegidas por comprobaciones de regresión.
-- [ ] F5: Node 54/54 real y Lighthouse ejecutado; fallos de contraste corregidos. Pendiente revisión manual de WCAG, zoom y lector de pantalla.
+- [ ] F5: Node 54/54, Chrome 50/50 y Lighthouse real ejecutados; fallos de contraste corregidos. Pendientes WCAG manual, zoom y TalkBack.
 - [x] F6: Despliegue GitHub Pages exitoso y archivos V4 servidos comprobados.
 - [ ] F6: Validación visual aprobada por el propietario.
 - [ ] F6: Línea base y mecanismo de medición documentados.
