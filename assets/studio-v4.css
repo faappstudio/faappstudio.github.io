@@ -116,7 +116,7 @@ p{max-width:68ch}
 .work-note a{color:var(--blue);font-weight:760;font-size:.84rem;white-space:nowrap}
 .portfolio-next{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:23px 0;border-bottom:1px solid var(--outline)}
 .portfolio-next strong{font-size:.92rem}
-.portfolio-next p{color:#69798a;font-size:.85rem}
+.portfolio-next p{color:#566a7c;font-size:.85rem}
 .portfolio-next>span{font-size:.79rem;color:#597085;font-weight:760}
 .future-app-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:24px}
 .catalog-card{padding:24px;border:1px solid var(--outline);background:#f8f9f7;display:flex;flex-direction:column}
@@ -132,7 +132,7 @@ p{max-width:68ch}
 .principles{background:#edf0eb}
 .principles-grid{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr);gap:clamp(42px,7vw,110px)}
 .principles h2{margin:14px 0 18px}
-.principles-intro{color:#657586;line-height:1.76;font-size:1.04rem}
+.principles-intro{color:#4d6273;line-height:1.76;font-size:1.04rem}
 .principle-list{border-top:1px solid #b9c8c2}
 .principle{display:grid;grid-template-columns:48px 1fr;gap:20px;border-bottom:1px solid #b9c8c2;padding:25px 0}
 .principle-number{font-size:.82rem;font-weight:820;color:var(--blue)}
