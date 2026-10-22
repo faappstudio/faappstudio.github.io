@@ -211,132 +211,118 @@ h1,h2,h3,p{margin-top:0}
 .reel-poster-play{position:absolute;inset:0;margin:auto;display:grid;place-items:center;width:66px;height:66px;border-radius:50%;background:#f4c58c;color:#10253d;box-shadow:0 8px 35px #0718298c}
 .reel-poster-play svg{width:30px;height:30px}
 .reel-poster-time{position:absolute;bottom:11px;right:12px;background:#0d2035dc;color:#fff;padding:5px 9px;border-radius:8px;font-size:.73rem}
-/* El Reel usa casi toda la pantalla disponible, sin recortar ni deformar el video. */
+/* Visor del Reel: composición compacta basada en el formato vertical, no en 16:9. */
 .reel-dialog{
-  width:min(1240px,calc(100vw - 48px));
-  height:min(94dvh,1000px);
+  --video-stage-width:clamp(310px,46dvh,440px);
+  width:min(calc(var(--video-stage-width) + 338px),calc(100vw - 28px));
+  height:min(94dvh,960px);
   max-width:none;
-  max-height:calc(100dvh - 16px);
-  margin:auto;
+  max-height:calc(100dvh - 12px);
   padding:0;
-  border-radius:18px;
-  border:1px solid #dce3ed;
+  margin:auto;
+  border:1px solid #dbe5eb;
+  border-radius:19px;
   background:#fff;
-  color:#193048;
-  box-shadow:0 25px 85px #0008;
+  color:#153048;
+  box-shadow:0 28px 90px #010b1db0;
   overflow:hidden;
   flex-direction:column;
 }
 .reel-dialog[open]{display:flex}
-.reel-dialog::backdrop{background:#061526e0}
+.reel-dialog::backdrop{background:#061526e3}
 .reel-dialog-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  flex:0 0 auto;
-  padding:10px 14px 10px 20px;
-  min-height:57px;
-  border-bottom:1px solid #e5ebf0;
+  display:flex;align-items:center;justify-content:space-between;gap:15px;
+  flex:0 0 auto;min-height:56px;padding:8px 11px 8px 19px;
+  border-bottom:1px solid #e4ebef;background:#fff
 }
-.reel-dialog-top strong{font-size:1.02rem}
+.reel-dialog-top strong{font-size:.99rem;letter-spacing:-.015em}
 .reel-dialog-top button{
-  flex:none;
-  border:0;
-  background:#e9eef4;
-  color:#24445d;
-  border-radius:10px;
-  width:42px;
-  height:42px;
-  font-size:1.7rem;
-  cursor:pointer;
+  display:grid;place-items:center;flex:none;width:40px;height:40px;
+  border:0;border-radius:11px;background:#edf2f5;color:#24465c;
+  font-size:1.65rem;cursor:pointer
 }
+.reel-dialog-top button:hover{background:#dfeaf0}
 .reel-dialog-body{
-  padding:12px;
-  flex:1 1 auto;
-  min-height:0;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 322px;
-  gap:13px;
+  padding:10px;flex:1 1 auto;min-height:0;
+  display:grid;grid-template-columns:minmax(0,1fr) 288px;gap:12px
 }
 .reel-screen{
-  min-height:0;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  gap:9px;
+  display:flex;flex-direction:column;gap:8px;
+  min-width:0;min-height:0
 }
 .reel-player{
-  flex:1 1 auto;
-  min-height:0;
-  min-width:0;
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:radial-gradient(ellipse at 50% 44%,#1c405c 0%,#0c1e30 72%);
-  border-radius:12px;
-  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  flex:1 1 auto;width:100%;min-width:0;min-height:0;
+  overflow:hidden;border-radius:13px;
+  background:#0b2339
 }
 .reel-player iframe{
-  display:block;
-  flex:0 0 auto;
-  max-width:100%;
-  max-height:100%;
-  min-height:0;
-  border:0;
+  display:block;flex:0 0 auto;max-width:100%;max-height:100%;
+  min-height:0;border:0;background:#0b2339
 }
+.reel-fallback{
+  flex:0 0 auto;font-size:.8rem;line-height:1.45;color:#64798b;
+  margin:0 4px 1px
+}
+.reel-fallback a{color:#225c85;text-underline-offset:3px;font-weight:790}
 .reel-side{
-  min-height:0;
-  min-width:0;
-  padding:26px 24px 23px;
-  border:1px solid #e0e7eb;
+  display:flex;align-items:center;justify-content:center;
+  min-width:0;min-height:0;overflow-y:auto;
+  padding:25px 23px;border:1px solid #e2e9ec;
   border-radius:13px;
-  background:linear-gradient(155deg,#f7f9fa 15%,#ebf2f6 100%);
-  color:#183049;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  gap:21px;
-  overflow-y:auto;
+  background:linear-gradient(155deg,#fcfdfc 0%,#edf5f4 100%)
 }
-.reel-side-eyebrow{display:block;font-size:.7rem;letter-spacing:.12em;color:#677f95;font-weight:850;margin-bottom:25px}
-.reel-side-icon{width:76px;height:76px;object-fit:cover;border-radius:19px;box-shadow:0 10px 25px #0a29452e;margin-bottom:25px}
-.reel-side h3{font-size:clamp(1.55rem,2.2vw,2.15rem);line-height:1.17;letter-spacing:-.05em;margin:0 0 15px}
-.reel-side p{color:#62758a;font-size:.91rem;line-height:1.66;margin:0}
-.reel-side-perks{display:grid;gap:11px;margin-top:23px;font-size:.84rem;color:#295b48;font-weight:740}
-.reel-side-actions{display:grid;gap:13px}
+.reel-side-content{width:100%;display:grid;gap:0;align-content:center}
+.reel-side-brand{display:flex;gap:12px;align-items:center;margin-bottom:29px}
+.reel-side-icon{
+  flex:none;width:60px;height:60px;object-fit:cover;border-radius:15px;
+  box-shadow:0 8px 20px #0c2b432b
+}
+.reel-side-eyebrow{
+  display:block;color:#56758a;font-size:.62rem;font-weight:850;
+  letter-spacing:.1em;line-height:1.4;margin-bottom:5px
+}
+.reel-side-brand strong{display:block;font-size:.84rem;line-height:1.25;color:#183b54}
+.reel-side h3{
+  margin:0 0 14px;max-width:250px;
+  font-size:clamp(1.6rem,2vw,2rem);line-height:1.12;letter-spacing:-.053em
+}
+.reel-side p{margin:0;font-size:.89rem;line-height:1.62;color:#5c7180}
+.reel-side-perks{
+  display:grid;gap:10px;margin:25px 0 27px;
+  font-size:.78rem;font-weight:780;line-height:1.4;color:#27614a
+}
+.reel-side-actions{display:grid;gap:14px}
 .reel-side-download{
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 16px;
-  min-height:55px;
-  border-radius:12px;
-  background:#122d48;
-  color:#fff;
-  font-weight:820;
-  font-size:.9rem;
-  text-decoration:none;
+  display:flex;align-items:center;justify-content:center;
+  min-height:52px;padding:12px;border-radius:11px;
+  background:#15324d;color:white;font-size:.88rem;font-weight:850;
+  text-align:center;text-decoration:none
 }
-.reel-side-download:hover{background:#2d5372}
-.reel-side-original{text-align:center;color:#3d6180;font-size:.82rem;font-weight:740;text-underline-offset:4px}
-.reel-fallback{font-size:.84rem;color:#526578;line-height:1.55;margin:13px 3px 0}
-.reel-fallback a{color:#1e5e92;font-weight:800;text-underline-offset:3px}
+.reel-side-download:hover{background:#305a78}
+.reel-side-original{
+  text-align:center;color:#3b647b;
+  font-size:.78rem;font-weight:750;text-underline-offset:3px
+}
 @media(max-width:800px){
 .app-gallery-section{padding:65px 0}
 .app-gallery-intro{display:block}
 .app-gallery-intro>.gallery-store-link{margin-top:13px}
 .reel-feature{grid-template-columns:1fr;padding:27px;gap:24px}
 }
-/* En tablet y móvil dejamos el Reel como experiencia de reproducción prioritaria. */
-@media(max-width:940px){
-.reel-dialog{width:min(740px,calc(100vw - 24px));height:min(93dvh,900px)}
-.reel-dialog-body{display:flex;flex-direction:column;padding:10px}
-.reel-screen{flex:1;min-height:0}
+/* El aspecto de una pantalla vertical prima sobre la opción "sitio de escritorio"
+   del navegador del teléfono. No reducimos el Reel a dos columnas diminutas. */
+@media(max-width:940px), (max-aspect-ratio:4/5){
+.reel-dialog{
+  width:min(650px,calc(100vw - 8px));
+  height:calc(100dvh - 10px);
+  max-height:calc(100dvh - 10px);
+  border-radius:12px
+}
+.reel-dialog-body{display:flex;flex-direction:column;padding:6px}
+.reel-screen{flex:1 1 auto;min-height:0}
 .reel-side{display:none}
-.reel-player{flex:1}
+.reel-player{flex:1 1 auto}
 }
 @media(max-width:580px){
 .app-gallery-section{padding:55px 0}
@@ -347,17 +333,10 @@ h1,h2,h3,p{margin-top:0}
 .reel-feature-actions{gap:17px}
 .reel-feature-actions .btn{width:100%}
 .reel-feature-actions .gallery-store-link{width:100%;justify-content:center}
-.reel-dialog{
-  width:calc(100vw - 8px);
-  height:calc(100dvh - 10px);
-  max-height:calc(100dvh - 10px);
-  border-radius:12px;
-}
-.reel-dialog-top{min-height:54px;padding:7px 10px 7px 14px}
+.reel-dialog-top{min-height:53px;padding:6px 9px 6px 12px}
 .reel-dialog-top strong{font-size:.91rem}
-.reel-dialog-body{padding:5px 6px 9px;gap:5px}
-.reel-player{border-radius:7px}
-.reel-fallback{font-size:.76rem;line-height:1.4;margin:4px 5px 0}
-
+.reel-dialog-body{gap:5px}
+.reel-player{border-radius:8px}
+.reel-fallback{font-size:.76rem;line-height:1.35;margin:4px 3px 0}
 }
 @media(prefers-reduced-motion:reduce){.reel-poster img{transition:none}.reel-poster:hover img{transform:none}}
