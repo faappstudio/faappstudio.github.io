@@ -49,7 +49,7 @@ Estas mejoras **no instalan Google Analytics**, no agregan píxeles de terceros 
 
 1. Modificar solo la rama `main` del repositorio `faappstudio/faappstudio.github.io`.
 2. Mantener `privacy.html`, `app-ads.txt` y `stations-live.json`.
-3. Ejecutar `node scripts/check-v4.mjs` desde la raíz del repo como smoke test offline. Confirmar además que el mensaje de WhatsApp, el modal, los enlaces oficiales y el catálogo permanezcan intactos.
+3. Ejecutar `node scripts/check-v4.mjs` y `node scripts/test-radio-behavior.mjs` desde la raíz del repositorio. El primer archivo cubre 27 controles estáticos, el segundo 26 comprobaciones de comportamiento con DOM simulado. Confirmar los enlaces y componentes críticos antes de publicar.
 4. Confirmar despliegue de GitHub Pages con resultado `success`.
 5. La **validación visual en móvil y escritorio corresponde al propietario**, a su solicitud.
 6. Observar tráfico y conversiones reales con métricas de Play Console antes de afirmar una mejora de instalaciones.
@@ -59,6 +59,6 @@ Estas mejoras **no instalan Google Analytics**, no agregan píxeles de terceros 
 - Brief, decisiones editoriales y baseline de recuperación: `V4-BRIEF-BASELINE.md`.
 - Roadmap y criterios de aceptación: `PLAN-V4-IDENTIDAD-UX.md`.
 - Refactor V4: `index.html` + `assets/studio-v4.css`; `radio-mexico-de-siempre/index.html` + `assets/radio-v4.css` + `assets/radio-v4.js`.
-- Smoke tests: `scripts/check-v4.mjs`, sin paquetes adicionales. Validan HTML, rutas, contenido del WhatsApp, controles de video/descarga y estructura, **no** la apariencia visual ni medidas de rendimiento.
+- Pruebas sin dependencias: `scripts/check-v4.mjs` (estructura, contenido y contraste crítico) y `scripts/test-radio-behavior.mjs` (UTM, modal, Reel, estado `inert`, restauración de foco, Escape y copiado). **No** son auditoría de navegador real, rendimiento ni aprobación visual.
 - `assets/studio.css` y `assets/site.css` no se eliminan aún: permiten recuperar el aspecto anterior si el propietario detecta problemas. Se podrán borrar al aprobar ambas páginas.
 - Todas las pruebas y publicaciones son bajo demanda. **No programar automatizaciones ni monitoreos.**
