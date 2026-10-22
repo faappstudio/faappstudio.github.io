@@ -213,7 +213,7 @@ h1,h2,h3,p{margin-top:0}
 .reel-poster-time{position:absolute;bottom:11px;right:12px;background:#0d2035dc;color:#fff;padding:5px 9px;border-radius:8px;font-size:.73rem}
 /* Reel vertical 9:16. El contenido determina la altura; jamás estirar modal o iframe. */
 .reel-dialog{
-  width:min(426px,calc(100vw - 24px),calc((100dvh - 112px) * 9 / 16));
+  width:min(426px,calc(100vw - 24px),calc(56.25dvh - 63px));
   min-width:0;
   height:auto;
   max-height:calc(100dvh - 16px);
