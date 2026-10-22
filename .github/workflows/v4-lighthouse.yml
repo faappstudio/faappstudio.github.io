@@ -1,4 +1,4 @@
-name: V4 One-time Lighthouse Audit
+name: V4 Lighthouse Verification (Post Contrast Fix)
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   audit:
-    name: Mobile + desktop performance and accessibility
+    name: Verify studio mobile and desktop contrast fix
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -26,12 +26,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p audit-results
-          for page in studio radio; do
-            if [ "$page" = studio ]; then
-              url="https://faappstudio.github.io/"
-            else
-              url="https://faappstudio.github.io/radio-mexico-de-siempre/"
-            fi
+          for page in studio; do
+            url="https://faappstudio.github.io/"
             for form in mobile desktop; do
               flags=""
               if [ "$form" = desktop ]; then
@@ -52,7 +48,7 @@ jobs:
         run: |
           node <<'NODE'
           const fs=require('node:fs');
-          const pairs=[['studio','mobile'],['studio','desktop'],['radio','mobile'],['radio','desktop']];
+          const pairs=[['studio','mobile'],['studio','desktop']];
           const rows=['# FA App Studio V4 · Lighthouse laboratory report','',
             'These are lab measurements at the audit time, not real-user Core Web Vitals.',
             'INP is not measured as a field metric by this workflow. The owner retains visual approval.','',
@@ -72,7 +68,7 @@ jobs:
               collected++;
             }catch(err){rows.push('| '+page+' | '+form+' | failed to parse | — | — | — | — | — |')}
           }
-          rows.push('','Audits successfully collected: '+collected+'/4.');
+          rows.push('','Audits successfully collected: '+collected+'/2.');
           fs.writeFileSync('audit-results/README.md',rows.join('\n')+'\n');
           console.log(rows.join('\n'));
           if(!collected){console.error('No usable Lighthouse reports.');process.exitCode=1}
@@ -81,6 +77,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fa-app-studio-v4-lighthouse
+          name: fa-app-studio-v4-lighthouse-post-contrast-fix
           path: audit-results/
           retention-days: 7
