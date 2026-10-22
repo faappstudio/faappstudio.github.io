@@ -14,7 +14,7 @@ El sitio personal antiguo no se modifica, porque la aplicación usa su archivo `
 ## Catálogo de aplicaciones
 
 - `index.html`: contenido corporativo y app principal renderizada estáticamente para SEO y navegadores sin JavaScript.
-- `assets/studio.css`: estilos corporativos.
+- `assets/studio-v4.css`: sistema visual corporativo V4, sin estilos heredados de la radio. `assets/studio.css` es el archivo legado y ya no se usa en la portada.
 - `assets/products.json`: datos del catálogo de aplicaciones. Una entrada por producto, con `id`, `status`, `name`, `description`, `icon`, `category`, `page` y `store`.
 - `assets/catalog.js`: muestra automáticamente en la portada otros productos con `status: "published"`. Omite `radio-mexico-de-siempre`, porque ya está destacado en HTML. Si no hay otras apps, mantiene el texto de próximos lanzamientos.
 - Cada producto futuro debe tener su landing independiente antes de aparecer como publicado. No publicar tarjetas con cifras, reseñas ni logros ficticios.
@@ -22,7 +22,8 @@ El sitio personal antiguo no se modifica, porque la aplicación usa su archivo `
 ## Página de Radio México
 
 - `radio-mexico-de-siempre/index.html`: landing exclusiva.
-- `assets/site.css`: estilos de la radio, galería oficial y diálogo de demostración.
+- `assets/radio-v4.css`: sistema visual cálido de Radio México; mantiene sin rediseñar las reglas funcionales aprobadas del Reel y modal inicial. `assets/site.css` queda como referencia legada, no se sirve en la página V4.
+- `assets/radio-v4.js`: comportamiento del video de Facebook, UTMs, copiar enlace y modal inicial, externalizado sin cambiar la lógica que estaba aprobada.
 - La sección `#vistas` muestra las **dos imágenes oficiales publicadas en Google Play**, sin recrear ni alterar la UI de la aplicación.
 - El Reel real es `https://facebook.com/reel/1776460783652969`. La página intenta mostrarlo en un reproductor de Facebook **solo cuando el usuario hace clic**; el enlace original está siempre visible como alternativa, por si el embed no es compatible o está bloqueado. No usar reproducción automática.
 - El modal inicial aparece de inmediato y mantiene dos CTA: instalar en Google Play y compartir por WhatsApp.
@@ -48,7 +49,16 @@ Estas mejoras **no instalan Google Analytics**, no agregan píxeles de terceros 
 
 1. Modificar solo la rama `main` del repositorio `faappstudio/faappstudio.github.io`.
 2. Mantener `privacy.html`, `app-ads.txt` y `stations-live.json`.
-3. Confirmar que el mensaje de WhatsApp, el modal, los enlaces oficiales y el catálogo permanezcan intactos.
+3. Ejecutar `node scripts/check-v4.mjs` desde la raíz del repo como smoke test offline. Confirmar además que el mensaje de WhatsApp, el modal, los enlaces oficiales y el catálogo permanezcan intactos.
 4. Confirmar despliegue de GitHub Pages con resultado `success`.
 5. La **validación visual en móvil y escritorio corresponde al propietario**, a su solicitud.
 6. Observar tráfico y conversiones reales con métricas de Play Console antes de afirmar una mejora de instalaciones.
+
+## Desarrollo V4 en curso
+
+- Brief, decisiones editoriales y baseline de recuperación: `V4-BRIEF-BASELINE.md`.
+- Roadmap y criterios de aceptación: `PLAN-V4-IDENTIDAD-UX.md`.
+- Refactor V4: `index.html` + `assets/studio-v4.css`; `radio-mexico-de-siempre/index.html` + `assets/radio-v4.css` + `assets/radio-v4.js`.
+- Smoke tests: `scripts/check-v4.mjs`, sin paquetes adicionales. Validan HTML, rutas, contenido del WhatsApp, controles de video/descarga y estructura, **no** la apariencia visual ni medidas de rendimiento.
+- `assets/studio.css` y `assets/site.css` no se eliminan aún: permiten recuperar el aspecto anterior si el propietario detecta problemas. Se podrán borrar al aprobar ambas páginas.
+- Todas las pruebas y publicaciones son bajo demanda. **No programar automatizaciones ni monitoreos.**
