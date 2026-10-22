@@ -16,7 +16,7 @@
         u.searchParams.set('utm_source',source);
         u.searchParams.set('utm_medium',medium);
         u.searchParams.set('utm_campaign',campaign);
-        var context=link.closest('.install-dialog')?'modal':link.closest('.reel-dialog')?'video':link.closest('.mobile-cta')?'sticky':link.closest('.hero')?'hero':link.closest('.app-gallery-section')?'galeria':link.closest('.share-section')?'compartir':link.closest('.final-call')?'final':'navegacion';
+        var context=link.closest('.install-dialog')?'modal':link.closest('.reel-window')?'video':link.closest('.mobile-cta')?'sticky':link.closest('.hero')?'hero':link.closest('.app-gallery-section')?'galeria':link.closest('.share-section')?'compartir':link.closest('.final-call')?'final':'navegacion';
         u.searchParams.set('utm_content',context);
         link.href=u.toString();
       }catch(e){}
@@ -29,7 +29,20 @@
     var player=document.getElementById('reel-player');
     var closeButton=document.getElementById('close-reel');
     if(!overlay||!card||!player||!closeButton)return;
-    var opener=null,oldOverflow='',activeFrame=null;
+    var opener=null,oldOverflow='',activeFrame=null,backgroundState=[];
+    function setBackgroundInert(enabled){
+      if(enabled){
+        backgroundState=[];
+        Array.prototype.forEach.call(document.body.children,function(element){
+          if(element===overlay||!('inert' in element))return;
+          backgroundState.push({element:element,wasInert:element.inert});
+          element.inert=true;
+        });
+      }else{
+        backgroundState.forEach(function(item){item.element.inert=item.wasInert});
+        backgroundState=[];
+      }
+    }
     var reelURL="https://facebook.com/reel/1776460783652969";
     function fit(){
       var vv=window.visualViewport;
@@ -47,6 +60,7 @@
     function close(){
       if(overlay.hidden)return;
       player.replaceChildren();activeFrame=null;overlay.hidden=true;
+      setBackgroundInert(false);
       document.body.style.overflow=oldOverflow;
       window.removeEventListener('resize',fit);
       if(window.visualViewport)window.visualViewport.removeEventListener('resize',fit);
@@ -55,6 +69,7 @@
     function open(button){
       opener=button;oldOverflow=document.body.style.overflow;overlay.hidden=false;
       document.body.style.overflow='hidden';
+      setBackgroundInert(true);
       var width=fit();
       var frame=document.createElement('iframe');
       frame.title='Video promocional de Radio México de Siempre en Facebook';
