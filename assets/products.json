@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "products": [
+    {
+      "id": "radio-mexico-de-siempre",
+      "name": "Radio México de Siempre",
+      "status": "published",
+      "platforms": [
+        "Android"
+      ],
+      "category": "Música y radio",
+      "description": "Rancheras, mariachi, corridos y música mexicana en una radio fácil de usar.",
+      "icon": "https://play-lh.googleusercontent.com/0Pzi9viFcpTtmi1oC8Kt0mcisMkskQ_d4C3DXLcQLcs7gzKYjn7hbidqSkML6eogBOApt_0C9tiRknqLq5o8=w240-h480-rw",
+      "cover": "https://play-lh.googleusercontent.com/xFhhs1h_kBGgdxskFVnUC1KrjgUpOELKg52P15DSilA7-au7HioYkJybk9jdbbI28Is9GPd6T6lDofG9xXLcyA=w1052-h592-rw",
+      "page": "/radio-mexico-de-siempre/",
+      "store": "https://play.google.com/store/apps/details?id=cl.rancherasfacil.app"
+    }
+  ]
+}
