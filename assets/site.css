@@ -213,11 +213,10 @@ h1,h2,h3,p{margin-top:0}
 .reel-poster-time{position:absolute;bottom:11px;right:12px;background:#0d2035dc;color:#fff;padding:5px 9px;border-radius:8px;font-size:.73rem}
 /* Visor del Reel: composición compacta basada en el formato vertical, no en 16:9. */
 .reel-dialog{
-  --video-stage-width:clamp(310px,46dvh,440px);
-  width:min(calc(var(--video-stage-width) + 338px),calc(100vw - 28px));
-  height:min(94dvh,960px);
+  width:min(710px,calc(100vw - 32px));
+  height:min(86dvh,735px);
   max-width:none;
-  max-height:calc(100dvh - 12px);
+  max-height:calc(100dvh - 18px);
   padding:0;
   margin:auto;
   border:1px solid #dbe5eb;
@@ -244,7 +243,7 @@ h1,h2,h3,p{margin-top:0}
 .reel-dialog-top button:hover{background:#dfeaf0}
 .reel-dialog-body{
   padding:10px;flex:1 1 auto;min-height:0;
-  display:grid;grid-template-columns:minmax(0,1fr) 288px;gap:12px
+  display:grid;grid-template-columns:minmax(0,1fr) 245px;gap:12px
 }
 .reel-screen{
   display:flex;flex-direction:column;gap:8px;
@@ -314,9 +313,9 @@ h1,h2,h3,p{margin-top:0}
    del navegador del teléfono. No reducimos el Reel a dos columnas diminutas. */
 @media(max-width:940px), (max-aspect-ratio:4/5){
 .reel-dialog{
-  width:min(650px,calc(100vw - 8px));
-  height:calc(100dvh - 10px);
-  max-height:calc(100dvh - 10px);
+  width:min(430px,calc(100vw - 16px));
+  height:min(82dvh,710px);
+  max-height:calc(100dvh - 16px);
   border-radius:12px
 }
 .reel-dialog-body{display:flex;flex-direction:column;padding:6px}
