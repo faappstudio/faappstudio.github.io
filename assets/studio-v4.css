@@ -200,6 +200,8 @@ p{max-width:68ch}
 }
 @media(max-width:520px){
   .shell{width:calc(100% - 32px)}
+  .header-action{display:none}
+  .header-inner{gap:12px}
   .header-action{min-height:40px;padding:9px 12px;font-size:.77rem}
   .brand-mark{width:43px;height:43px}
   .brand-text{font-size:.82rem}
@@ -238,6 +240,7 @@ p{max-width:68ch}
   .footer-bottom{display:block}
   .footer-bottom span{display:block}
 }
+.about-secondary{margin-top:18px}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important}
