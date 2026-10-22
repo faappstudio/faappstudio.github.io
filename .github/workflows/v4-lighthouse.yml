@@ -1,0 +1,86 @@
+name: V4 One-time Lighthouse Audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/v4-lighthouse.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Mobile + desktop performance and accessibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Prepare Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check Chrome installation
+        run: |
+          command -v google-chrome || command -v chromium || command -v chromium-browser
+      - name: Audit both pages (mobile and desktop)
+        shell: bash
+        run: |
+          mkdir -p audit-results
+          for page in studio radio; do
+            if [ "$page" = studio ]; then
+              url="https://faappstudio.github.io/"
+            else
+              url="https://faappstudio.github.io/radio-mexico-de-siempre/"
+            fi
+            for form in mobile desktop; do
+              flags=""
+              if [ "$form" = desktop ]; then
+                flags="--preset=desktop"
+              fi
+              echo "Auditing $page $form"
+              npx --yes lighthouse@12.8.2 "$url" \
+                --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+                --output=json \
+                --output-path="audit-results/${page}-${form}.json" \
+                --only-categories=performance,accessibility,best-practices,seo \
+                --max-wait-for-load=65000 \
+                --quiet $flags || echo "::warning::Lighthouse failed for $page $form"
+            done
+          done
+      - name: Summarize audit scores and metrics
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs');
+          const pairs=[['studio','mobile'],['studio','desktop'],['radio','mobile'],['radio','desktop']];
+          const rows=['# FA App Studio V4 · Lighthouse laboratory report','',
+            'These are lab measurements at the audit time, not real-user Core Web Vitals.',
+            'INP is not measured as a field metric by this workflow. The owner retains visual approval.','',
+            '| Page | Device | Performance | Accessibility | Best practices | SEO | LCP | CLS |',
+            '|---|---|---:|---:|---:|---:|---:|---:|'];
+          let collected=0;
+          for(const [page,form] of pairs){
+            const filename='audit-results/'+page+'-'+form+'.json';
+            if(!fs.existsSync(filename)){rows.push('| '+page+' | '+form+' | unavailable | — | — | — | — | — |');continue}
+            try{
+              const v=JSON.parse(fs.readFileSync(filename,'utf8'));
+              const categories=v.categories||{},a=v.audits||{};
+              const pct=x=>typeof x?.score==='number'?Math.round(x.score*100):'—';
+              const lcp=a['largest-contentful-paint']?.displayValue||'—';
+              const cls=a['cumulative-layout-shift']?.displayValue||'—';
+              rows.push('| '+page+' | '+form+' | '+pct(categories.performance)+' | '+pct(categories.accessibility)+' | '+pct(categories['best-practices'])+' | '+pct(categories.seo)+' | '+lcp+' | '+cls+' |');
+              collected++;
+            }catch(err){rows.push('| '+page+' | '+form+' | failed to parse | — | — | — | — | — |')}
+          }
+          rows.push('','Audits successfully collected: '+collected+'/4.');
+          fs.writeFileSync('audit-results/README.md',rows.join('\n')+'\n');
+          console.log(rows.join('\n'));
+          if(!collected){console.error('No usable Lighthouse reports.');process.exitCode=1}
+          NODE
+      - name: Attach original JSON and readable summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fa-app-studio-v4-lighthouse
+          path: audit-results/
+          retention-days: 7
