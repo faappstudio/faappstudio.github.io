@@ -270,8 +270,9 @@
         frame.loading='eager';
         // Facebook tiene contenido 9:16. El iframe define el tamaño del
         // modal; nunca se estira para llenar un contenedor con alto fijo.
-        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width=420';
         dialog.showModal();
+        var actualWidth=Math.round(player.getBoundingClientRect().width)||320;
+        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+Math.max(220,Math.min(426,actualWidth));
         player.replaceChildren(frame);
       });
     });
