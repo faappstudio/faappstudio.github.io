@@ -211,117 +211,92 @@ h1,h2,h3,p{margin-top:0}
 .reel-poster-play{position:absolute;inset:0;margin:auto;display:grid;place-items:center;width:66px;height:66px;border-radius:50%;background:#f4c58c;color:#10253d;box-shadow:0 8px 35px #0718298c}
 .reel-poster-play svg{width:30px;height:30px}
 .reel-poster-time{position:absolute;bottom:11px;right:12px;background:#0d2035dc;color:#fff;padding:5px 9px;border-radius:8px;font-size:.73rem}
-/* Visor del Reel: composición compacta basada en el formato vertical, no en 16:9. */
+/* Reel vertical 9:16. El contenido determina la altura; jamás estirar modal o iframe. */
 .reel-dialog{
-  width:min(710px,calc(100vw - 32px));
-  height:min(86dvh,735px);
+  width:min(426px,calc(100vw - 24px),calc((100dvh - 112px) * 9 / 16));
+  min-width:0;
+  height:auto;
+  max-height:calc(100dvh - 16px);
   max-width:none;
-  max-height:calc(100dvh - 18px);
-  padding:0;
   margin:auto;
-  border:1px solid #dbe5eb;
-  border-radius:19px;
-  background:#fff;
-  color:#153048;
-  box-shadow:0 28px 90px #010b1db0;
+  padding:0;
   overflow:hidden;
-  flex-direction:column;
+  border:1px solid #dbe5eb;
+  border-radius:14px;
+  background:#fff;
+  color:#17314a;
+  box-shadow:0 24px 75px #010b1d9c;
 }
-.reel-dialog[open]{display:flex}
-.reel-dialog::backdrop{background:#061526e3}
+.reel-dialog::backdrop{background:#061526dc}
 .reel-dialog-top{
-  display:flex;align-items:center;justify-content:space-between;gap:15px;
-  flex:0 0 auto;min-height:56px;padding:8px 11px 8px 19px;
-  border-bottom:1px solid #e4ebef;background:#fff
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-height:50px;
+  padding:5px 8px 5px 13px;
+  border-bottom:1px solid #e3e8ec;
 }
-.reel-dialog-top strong{font-size:.99rem;letter-spacing:-.015em}
+.reel-dialog-top strong{
+  min-width:0;
+  font-size:.86rem;
+  font-weight:790;
+  letter-spacing:-.015em;
+  line-height:1.25;
+}
 .reel-dialog-top button{
-  display:grid;place-items:center;flex:none;width:40px;height:40px;
-  border:0;border-radius:11px;background:#edf2f5;color:#24465c;
-  font-size:1.65rem;cursor:pointer
+  flex:none;
+  display:grid;
+  place-items:center;
+  border:0;
+  width:37px;
+  height:37px;
+  border-radius:9px;
+  background:#edf2f5;
+  color:#25465e;
+  font-size:1.55rem;
+  cursor:pointer;
 }
-.reel-dialog-top button:hover{background:#dfeaf0}
+.reel-dialog-top button:hover{background:#dfe9ee}
 .reel-dialog-body{
-  padding:10px;flex:1 1 auto;min-height:0;
-  display:grid;grid-template-columns:minmax(0,1fr) 245px;gap:12px
-}
-.reel-screen{
-  display:flex;flex-direction:column;gap:8px;
-  min-width:0;min-height:0
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:5px;
 }
 .reel-player{
-  display:flex;align-items:center;justify-content:center;
-  flex:1 1 auto;width:100%;min-width:0;min-height:0;
-  overflow:hidden;border-radius:13px;
-  background:#0b2339
+  flex:none;
+  width:100%;
+  aspect-ratio:9 / 16;
+  display:block;
+  overflow:hidden;
+  border-radius:8px;
+  background:#10283c;
 }
 .reel-player iframe{
-  display:block;flex:0 0 auto;max-width:100%;max-height:100%;
-  min-height:0;border:0;background:#0b2339
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  margin:0;
+  padding:0;
 }
 .reel-fallback{
-  flex:0 0 auto;font-size:.8rem;line-height:1.45;color:#64798b;
-  margin:0 4px 1px
+  display:block;
+  padding:8px 4px 5px;
+  text-align:center;
+  color:#2a5a81;
+  font-size:.77rem;
+  font-weight:760;
+  line-height:1.35;
+  text-underline-offset:3px;
 }
-.reel-fallback a{color:#225c85;text-underline-offset:3px;font-weight:790}
-.reel-side{
-  display:flex;align-items:center;justify-content:center;
-  min-width:0;min-height:0;overflow-y:auto;
-  padding:25px 23px;border:1px solid #e2e9ec;
-  border-radius:13px;
-  background:linear-gradient(155deg,#fcfdfc 0%,#edf5f4 100%)
-}
-.reel-side-content{width:100%;display:grid;gap:0;align-content:center}
-.reel-side-brand{display:flex;gap:12px;align-items:center;margin-bottom:29px}
-.reel-side-icon{
-  flex:none;width:60px;height:60px;object-fit:cover;border-radius:15px;
-  box-shadow:0 8px 20px #0c2b432b
-}
-.reel-side-eyebrow{
-  display:block;color:#56758a;font-size:.62rem;font-weight:850;
-  letter-spacing:.1em;line-height:1.4;margin-bottom:5px
-}
-.reel-side-brand strong{display:block;font-size:.84rem;line-height:1.25;color:#183b54}
-.reel-side h3{
-  margin:0 0 14px;max-width:250px;
-  font-size:clamp(1.6rem,2vw,2rem);line-height:1.12;letter-spacing:-.053em
-}
-.reel-side p{margin:0;font-size:.89rem;line-height:1.62;color:#5c7180}
-.reel-side-perks{
-  display:grid;gap:10px;margin:25px 0 27px;
-  font-size:.78rem;font-weight:780;line-height:1.4;color:#27614a
-}
-.reel-side-actions{display:grid;gap:14px}
-.reel-side-download{
-  display:flex;align-items:center;justify-content:center;
-  min-height:52px;padding:12px;border-radius:11px;
-  background:#15324d;color:white;font-size:.88rem;font-weight:850;
-  text-align:center;text-decoration:none
-}
-.reel-side-download:hover{background:#305a78}
-.reel-side-original{
-  text-align:center;color:#3b647b;
-  font-size:.78rem;font-weight:750;text-underline-offset:3px
-}
+.reel-fallback:hover{color:#123959}
 @media(max-width:800px){
 .app-gallery-section{padding:65px 0}
 .app-gallery-intro{display:block}
 .app-gallery-intro>.gallery-store-link{margin-top:13px}
 .reel-feature{grid-template-columns:1fr;padding:27px;gap:24px}
-}
-/* El aspecto de una pantalla vertical prima sobre la opción "sitio de escritorio"
-   del navegador del teléfono. No reducimos el Reel a dos columnas diminutas. */
-@media(max-width:940px), (max-aspect-ratio:4/5){
-.reel-dialog{
-  width:min(430px,calc(100vw - 16px));
-  height:min(82dvh,710px);
-  max-height:calc(100dvh - 16px);
-  border-radius:12px
-}
-.reel-dialog-body{display:flex;flex-direction:column;padding:6px}
-.reel-screen{flex:1 1 auto;min-height:0}
-.reel-side{display:none}
-.reel-player{flex:1 1 auto}
 }
 @media(max-width:580px){
 .app-gallery-section{padding:55px 0}
@@ -332,10 +307,9 @@ h1,h2,h3,p{margin-top:0}
 .reel-feature-actions{gap:17px}
 .reel-feature-actions .btn{width:100%}
 .reel-feature-actions .gallery-store-link{width:100%;justify-content:center}
-.reel-dialog-top{min-height:53px;padding:6px 9px 6px 12px}
-.reel-dialog-top strong{font-size:.91rem}
-.reel-dialog-body{gap:5px}
-.reel-player{border-radius:8px}
-.reel-fallback{font-size:.76rem;line-height:1.35;margin:4px 3px 0}
+.reel-dialog{border-radius:11px}
+.reel-dialog-top{min-height:47px}
+.reel-dialog-top strong{font-size:.78rem}
+.reel-fallback{font-size:.72rem}
 }
 @media(prefers-reduced-motion:reduce){.reel-poster img{transition:none}.reel-poster:hover img{transform:none}}
