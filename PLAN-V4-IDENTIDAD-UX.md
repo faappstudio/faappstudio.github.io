@@ -1,10 +1,26 @@
 # FA App Studio — Plan maestro V4 de marca, UX/UI y arquitectura web
 
-**Estado:** planificado; **ninguna tarea de rediseño implementada por este documento**  
+**Estado:** EN EJECUCIÓN · baseline, brief, redacción V4 y primera implementación corporativa iniciadas. No confundir despliegue técnico con aprobación visual.  
 **Fecha de auditoría:** 22 de octubre de 2026  
 **Repositorio:** `faappstudio/faappstudio.github.io`, rama `main`  
 **Alcance:** página corporativa, landing de Radio México de Siempre, sistema visual, textos, accesibilidad, rendimiento, SEO, medición y release.  
 **Responsable de validación visual:** propietario de FA App Studio. No automatizar la validación visual ni crear monitoreos programados sin autorización.
+
+## Bitácora de inicio — 22 de octubre de 2026
+
+**Reevaluación completada:** se corrigieron los vacíos de control de releases, referencias de imagen, privacidad/medición y separación entre QA técnico y aprobación visual. Consulta [V4-BRIEF-BASELINE.md](V4-BRIEF-BASELINE.md).
+
+**Baseline recuperable previo a V4:** `18755baf0b80a60e1dec339e860ed882d4386785`.
+
+**Entregado en la primera implementación:**
+- Hoja corporativa autocontenida `assets/studio-v4.css`, no ampliación de estilos previos.
+- Portada corporativa `index.html` reestructurada: nueva voz, identidad editorial, producto publicado real, metodología concreta, catálogo ampliable y contacto.
+- Texto editorial de Radio México de Siempre revisado, incluyendo el hero, características, demostración, historia, FAQ, compartición y cierre.
+- Metadatos sociales/SEO actualizados en ambas páginas.
+- Enlaces a Play Store, WhatsApp, Reel y catálogo preservados. El código del Reel y el modal promocional se conservan intactos.
+- Sin cambios en `stations-live.json`, `app-ads.txt`, políticas legales o la app Android.
+
+**Pendiente:** refactor de CSS y layout comercial de la radio, auditoría de accesibilidad y rendimiento, QA visual del propietario y evaluación de datos reales. No se declarará la V4 finalizada con una sola publicación.
 
 ## Resumen ejecutivo
 
@@ -280,13 +296,13 @@ La primera entrega debe ser **copywriting + diseño base** antes de programar ot
 
 ## 9. Checklist de trabajo para marcar avance
 
-- [ ] F0: Baseline SHA y contratos guardados.
+- [x] F0: Baseline SHA y contratos guardados.
 - [ ] F1: Brief y guías de tono de FA App Studio aprobados.
 - [ ] F1: Brief y guías de tono de Radio México aprobados.
-- [ ] F1: Copy completo depurado de ambos sitios.
+- [x] F1: Primera pasada completa del copy V4 aplicada en ambos sitios; pendiente aprobación editorial del propietario.
 - [ ] F2: Dos direcciones creativas comparadas por marca.
-- [ ] F2: Tokens, tipografía y componentes elegidos.
-- [ ] F3: Página corporativa implementada y QA técnico aprobado.
+- [ ] F2: Tokens y componentes corporativos implementados; pendiente sistema visual de Radio México.
+- [ ] F3: Página corporativa implementada; pendiente comprobación de despliegue y validación visual.
 - [ ] F4: Página Radio implementada y QA técnico aprobado.
 - [ ] F4: Reel/modal/WhatsApp/Play sin regresiones.
 - [ ] F5: CSS/JS refactorizados; accesibilidad y rendimiento revisados.
