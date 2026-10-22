@@ -22,7 +22,7 @@ svg{flex:none}
 a,button{-webkit-tap-highlight-color:transparent}
 a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
 h1,h2,h3,p,figure{margin:0}
-h1,h2,h3{line-height:1.09;letter-spacing:-.05em}
+h1,h2,h3{line-height:1.09;letter-spacing:-.05em;overflow-wrap:anywhere}
 h1{font-size:clamp(3.6rem,6.8vw,7.1rem);font-weight:790}
 h2{font-size:clamp(2.45rem,4.9vw,4.5rem);font-weight:760}
 h3{font-size:clamp(1.25rem,2vw,1.8rem)}
@@ -55,7 +55,7 @@ p{max-width:68ch}
 
 /* Corporate navigation */
 .site-header{position:sticky;top:0;z-index:30;background:rgba(248,249,246,.97);border-bottom:1px solid var(--line-soft);backdrop-filter:blur(14px)}
-.header-inner{display:flex;align-items:center;gap:26px;min-height:82px}
+.header-inner{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;min-height:82px;padding-block:9px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand-mark{width:46px;height:46px;border-radius:8px;object-fit:cover;flex:none}
 .brand-text{font-size:.92rem;font-weight:890;letter-spacing:.10em;line-height:1.2}
@@ -68,6 +68,7 @@ p{max-width:68ch}
 /* Hero – primarily brand expression; product appears as proof, not as the master brand */
 .hero{position:relative;overflow:hidden;background:var(--canvas)}
 .hero-inner{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(315px,.87fr);gap:clamp(30px,4.6vw,78px);align-items:center;padding-top:clamp(70px,8vw,119px);padding-bottom:clamp(78px,8vw,122px)}
+.hero-copy,.about-grid>*,.principles-grid>*{min-width:0}
 .hero .eyebrow{color:var(--blue);display:flex;align-items:center;gap:12px}
 .hero .eyebrow::before{content:"";width:28px;height:2px;background:var(--blue)}
 .hero h1{margin:26px 0 28px;max-width:760px}
@@ -182,7 +183,7 @@ p{max-width:68ch}
   .header-inner{min-height:73px}
   .nav{display:none}
   .header-action{margin-left:auto}
-  .hero-inner{grid-template-columns:1fr;padding:68px 0 62px;gap:42px}
+  .hero-inner{grid-template-columns:minmax(0,1fr);padding:68px 0 62px;gap:42px}
   .hero h1{font-size:clamp(3.5rem,9vw,5.4rem);margin-top:22px}
   .hero-art{min-height:360px}
   .hero-caption{align-items:flex-start}
@@ -191,7 +192,7 @@ p{max-width:68ch}
   .work-showcase{grid-template-columns:1fr}
   .work-visual{min-height:345px;padding:28px}
   .work-copy{padding:35px}
-  .principles-grid,.about-grid{grid-template-columns:1fr;gap:38px}
+  .principles-grid,.about-grid{grid-template-columns:minmax(0,1fr);gap:38px}
   .contact-grid{display:block}
   .contact-actions{margin-top:29px}
   .footer-main{display:block}
