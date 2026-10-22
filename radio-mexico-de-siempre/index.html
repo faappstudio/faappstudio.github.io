@@ -198,31 +198,13 @@
   <a href="https://play.google.com/store/apps/details?id=cl.rancherasfacil.app" data-play-cta target="_blank" rel="noopener noreferrer">Descargar ↗</a>
 </div>
 <dialog id="reel-dialog" class="reel-dialog" aria-labelledby="reel-title">
-  <div class="reel-dialog-top"><strong id="reel-title">Conoce Radio México de Siempre</strong><button type="button" id="close-reel" aria-label="Cerrar video">×</button></div>
+  <div class="reel-dialog-top">
+    <strong id="reel-title">Radio México de Siempre · Video</strong>
+    <button type="button" id="close-reel" aria-label="Cerrar video">×</button>
+  </div>
   <div class="reel-dialog-body">
-    <div class="reel-screen">
-      <div id="reel-player" class="reel-player"></div>
-      <p class="reel-fallback">Si Facebook no muestra el video aquí, puedes <a href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">ver el Reel original en Facebook ↗</a>.</p>
-    </div>
-    <aside class="reel-side" aria-label="Información de Radio México de Siempre">
-      <div class="reel-side-content">
-        <div class="reel-side-brand">
-          <img class="reel-side-icon" src="https://play-lh.googleusercontent.com/0Pzi9viFcpTtmi1oC8Kt0mcisMkskQ_d4C3DXLcQLcs7gzKYjn7hbidqSkML6eogBOApt_0C9tiRknqLq5o8=w240-h480-rw" width="62" height="62" alt="">
-          <div><span class="reel-side-eyebrow">FA APP STUDIO PRESENTA</span><strong>Radio México de Siempre</strong></div>
-        </div>
-        <h3>La música que despierta recuerdos. ❤️</h3>
-        <p>Rancheras, mariachi y música mexicana en una radio fácil de usar.</p>
-        <div class="reel-side-perks" aria-label="Ventajas de la aplicación">
-          <span>✓ Gratis para Android</span>
-          <span>✓ Escucha desde que la abres</span>
-          <span>✓ Guarda tus emisoras favoritas</span>
-        </div>
-        <div class="reel-side-actions">
-          <a class="reel-side-download" href="https://play.google.com/store/apps/details?id=cl.rancherasfacil.app" data-play-cta target="_blank" rel="noopener noreferrer">Descargar gratis ↗</a>
-          <a class="reel-side-original" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">Ver video original en Facebook ↗</a>
-        </div>
-      </div>
-    </aside>
+    <div id="reel-player" class="reel-player"></div>
+    <a class="reel-fallback" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">Ver el Reel original en Facebook ↗</a>
   </div>
 </dialog>
 <dialog class="install-dialog" id="download-modal" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
@@ -286,18 +268,10 @@
         frame.allowFullscreen=true;
         frame.referrerPolicy='strict-origin-when-cross-origin';
         frame.loading='eager';
-        // El Reel original es vertical (aprox. 9:16).
-        // No calcular el embed usando solo el ANCHO: Facebook renderiza un
-        // video mucho más alto y la parte superior/inferior queda fuera del iframe.
+        // Facebook tiene contenido 9:16. El iframe define el tamaño del
+        // modal; nunca se estira para llenar un contenedor con alto fijo.
+        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width=420';
         dialog.showModal();
-        var area=player.getBoundingClientRect();
-        var frameHeight=Math.max(1,Math.floor(area.height));
-        var frameWidth=Math.max(1,Math.min(Math.floor(area.width),Math.floor(frameHeight*0.52),600));
-        frame.style.width=frameWidth+'px';
-        frame.style.height=frameHeight+'px';
-        frame.setAttribute('width',String(frameWidth));
-        frame.setAttribute('height',String(frameHeight));
-        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+frameWidth;
         player.replaceChildren(frame);
       });
     });
