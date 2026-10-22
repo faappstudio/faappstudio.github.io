@@ -1,0 +1,38 @@
+name: V4 One-time Accessibility Browser Audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/v4-a11y-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  accessibility:
+    name: WCAG axe, keyboard and text zoom
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+      - name: Prepare Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify Chrome
+        run: google-chrome --version
+      - name: Install lightweight auditing dependencies
+        run: npm install --no-save --no-audit --no-fund playwright-core@1.56.1 axe-core@4.10.3
+      - name: Run independent browser accessibility tests
+        env:
+          CHROME_BINARY: /usr/bin/google-chrome
+        run: node scripts/test-a11y-live.mjs
+      - name: Attach technical accessibility results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v4-technical-a11y
+          path: audit-results/accessibility-functional.json
+          retention-days: 7
