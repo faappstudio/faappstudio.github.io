@@ -13,7 +13,7 @@
 <link rel="canonical" href="https://faappstudio.github.io/radio-mexico-de-siempre/">
 <link rel="icon" type="image/webp" href="/assets/fa-app-studio-logo.webp">
 <link rel="preconnect" href="https://play-lh.googleusercontent.com" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=reel-fix-20261022-b">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <meta property="og:site_name" content="FA App Studio">
@@ -197,16 +197,12 @@
   <span><strong>Radio México de Siempre</strong><small>Gratis para Android</small></span>
   <a href="https://play.google.com/store/apps/details?id=cl.rancherasfacil.app" data-play-cta target="_blank" rel="noopener noreferrer">Descargar ↗</a>
 </div>
-<dialog id="reel-dialog" class="reel-dialog" aria-labelledby="reel-title">
-  <div class="reel-dialog-top">
-    <strong id="reel-title">Radio México de Siempre · Video</strong>
-    <button type="button" id="close-reel" aria-label="Cerrar video">×</button>
-  </div>
-  <div class="reel-dialog-body">
-    <div id="reel-player" class="reel-player"></div>
-    <a class="reel-fallback" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">Ver el Reel original en Facebook ↗</a>
-  </div>
-</dialog>
+<div id="reel-lightbox" class="reel-lightbox" hidden>
+  <section class="reel-window" role="dialog" aria-modal="true" aria-labelledby="reel-title">
+    <div class="reel-dialog-top"><strong id="reel-title">Radio México de Siempre · Video</strong><button type="button" id="close-reel" aria-label="Cerrar video">×</button></div>
+    <div class="reel-window-body"><div id="reel-player" class="reel-player"></div><a class="reel-fallback" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">Ver el Reel original en Facebook ↗</a></div>
+  </section>
+</div>
 <dialog class="install-dialog" id="download-modal" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
   <div class="modal-top"><button class="modal-close" type="button" id="close-download" aria-label="Cerrar ventana promocional">×</button></div>
   <div class="modal-content">
@@ -247,58 +243,64 @@
       }catch(e){}
     });
   })();
-  // El contenido externo de Facebook se carga SOLO al solicitarlo, con enlace alternativo.
+  // Visor independiente de <dialog> para evitar alturas gigantes en Brave.
   (function(){
-    var dialog=document.getElementById('reel-dialog'),player=document.getElementById('reel-player');
-    var opener=null;
-    if(!dialog||!player)return;
+    var overlay=document.getElementById('reel-lightbox');
+    var card=overlay&&overlay.querySelector('.reel-window');
+    var player=document.getElementById('reel-player');
+    var closeButton=document.getElementById('close-reel');
+    if(!overlay||!card||!player||!closeButton)return;
+    var opener=null,oldOverflow='',activeFrame=null;
     var reelURL="https://facebook.com/reel/1776460783652969";
+    function fit(){
+      var vv=window.visualViewport;
+      var w=Math.min(window.innerWidth||document.documentElement.clientWidth,vv?vv.width:Infinity);
+      var h=Math.min(window.innerHeight||document.documentElement.clientHeight,vv?vv.height:Infinity);
+      var videoW=Math.max(130,Math.floor(Math.min(400,w-34,Math.max(130,(h-116)*9/16))));
+      var videoH=Math.round(videoW*16/9);
+      card.style.width=(videoW+12)+'px';
+      card.style.height=(videoH+100)+'px';
+      player.style.width=videoW+'px';
+      player.style.height=videoH+'px';
+      if(activeFrame){activeFrame.style.width=videoW+'px';activeFrame.style.height=videoH+'px'}
+      return videoW;
+    }
     function close(){
-      player.replaceChildren();
-      if(dialog.open)dialog.close();
+      if(overlay.hidden)return;
+      player.replaceChildren();activeFrame=null;overlay.hidden=true;
+      document.body.style.overflow=oldOverflow;
+      window.removeEventListener('resize',fit);
+      if(window.visualViewport)window.visualViewport.removeEventListener('resize',fit);
       if(opener&&typeof opener.focus==='function')opener.focus();
     }
-    document.querySelectorAll('[data-open-reel]').forEach(function(b){
-      b.addEventListener('click',function(){
-        opener=b;
-        if(typeof dialog.showModal!=='function'){window.open(reelURL,'_blank','noopener');return}
-        var frame=document.createElement('iframe');
-        frame.title='Video promocional de Radio México de Siempre en Facebook';
-        frame.allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
-        frame.allowFullscreen=true;
-        frame.referrerPolicy='strict-origin-when-cross-origin';
-        frame.loading='eager';
-        // Dimensionar vídeo y diálogo en píxeles REALES: Brave en "sitio de
-        // escritorio" puede dejar un <dialog> con un alto implícito enorme.
-        // El iframe ocupa 9:16; el modal solo suma cabecera y enlace (102px).
-        function fitPortrait(){
-          var viewport=window.visualViewport;
-          var availW=Math.min(window.innerWidth||window.screen.width,viewport?viewport.width:Infinity);
-          var availH=Math.min(window.innerHeight||window.screen.height,viewport?viewport.height:Infinity);
-          var videoW=Math.max(80,Math.min(400,Math.floor(availW-26),Math.floor((availH-116)*9/16)));
-          var videoH=Math.round(videoW*16/9);
-          dialog.style.setProperty('--reel-modal-width',(videoW+12)+'px');
-          dialog.style.setProperty('--reel-modal-height',(videoH+102)+'px');
-          player.style.setProperty('--reel-video-width',videoW+'px');
-          player.style.setProperty('--reel-video-height',videoH+'px');
-          frame.setAttribute('width',String(videoW));
-          frame.setAttribute('height',String(videoH));
-          return videoW;
-        }
-        var width=fitPortrait();
-        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+width;
-        player.replaceChildren(frame);
-        dialog.showModal();
-        // También responde a rotación/cambio de tamaño, sin volver a reproducir.
-        var onResize=function(){if(dialog.open)fitPortrait()};
-        window.addEventListener('resize',onResize,{passive:true});
-        dialog.addEventListener('close',function(){window.removeEventListener('resize',onResize)},{once:true});
-      });
+    function open(button){
+      opener=button;oldOverflow=document.body.style.overflow;overlay.hidden=false;
+      document.body.style.overflow='hidden';
+      var width=fit();
+      var frame=document.createElement('iframe');
+      frame.title='Video promocional de Radio México de Siempre en Facebook';
+      frame.allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
+      frame.allowFullscreen=true;
+      frame.referrerPolicy='strict-origin-when-cross-origin';
+      frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+width;
+      activeFrame=frame;frame.style.width=player.style.width;frame.style.height=player.style.height;
+      player.replaceChildren(frame);
+      window.addEventListener('resize',fit,{passive:true});
+      if(window.visualViewport)window.visualViewport.addEventListener('resize',fit,{passive:true});
+      closeButton.focus();
+    }
+    document.querySelectorAll('[data-open-reel]').forEach(function(b){b.addEventListener('click',function(){open(b)})});
+    closeButton.addEventListener('click',close);
+    overlay.addEventListener('click',function(e){if(e.target===overlay)close()});
+    document.addEventListener('keydown',function(e){
+      if(overlay.hidden)return;
+      if(e.key==='Escape'){e.preventDefault();close();return}
+      if(e.key==='Tab'){
+        var first=closeButton,last=overlay.querySelector('.reel-fallback');
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+      }
     });
-    var closeBtn=document.getElementById('close-reel');
-    if(closeBtn)closeBtn.addEventListener('click',close);
-    dialog.addEventListener('cancel',function(e){e.preventDefault();close()});
-    dialog.addEventListener('click',function(e){if(e.target===dialog)close()});
   })();
   var copy=document.getElementById('copy'),copyLabel=document.getElementById('copy-label');
   if(copy&&copyLabel){
