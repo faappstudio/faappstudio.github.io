@@ -99,5 +99,11 @@ const contrastPairs=[
 ];
 check('Contraste AA de textos secundarios críticos (>=4,5:1)',
   contrastPairs.every(([fg,bg])=>radioCss.includes(fg)&&ratio(fg,bg)>=4.5));
+const studioContrastPairs=[
+  ['#566a7c','#ffffff'], // nota de próximos productos
+  ['#4d6273','#edf0eb']  // introducción a nuestra forma de trabajar
+];
+check('Contraste AA corporativo corregido según Lighthouse (>=4,5:1)',
+  studioContrastPairs.every(([fg,bg])=>companyCss.includes(fg)&&ratio(fg,bg)>=4.5));
 console.log('\n'+passed+' controles aprobados; '+failures+' fallidos');
 if(failures)process.exitCode=1;
