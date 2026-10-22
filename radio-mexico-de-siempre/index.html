@@ -224,14 +224,16 @@
     var allowed=/^[a-zA-Z0-9_-]{1,60}$/;
     var query=new URLSearchParams(window.location.search);
     var source=query.get('utm_source');
+    var medium=query.get('utm_medium');
     var campaign=query.get('utm_campaign');
     if(!allowed.test(source||''))source='faappstudio';
+    if(!allowed.test(medium||''))medium='website';
     if(!allowed.test(campaign||''))campaign='radio_mexico_de_siempre';
     document.querySelectorAll('a[data-play-cta]').forEach(function(link){
       try{
         var u=new URL(link.href);
         u.searchParams.set('utm_source',source);
-        u.searchParams.set('utm_medium','website');
+        u.searchParams.set('utm_medium',medium);
         u.searchParams.set('utm_campaign',campaign);
         var context=link.closest('.install-dialog')?'modal':link.closest('.mobile-cta')?'sticky':link.closest('.hero')?'hero':link.closest('.app-gallery-section')?'galeria':link.closest('.share-section')?'compartir':link.closest('.final-call')?'final':'navegacion';
         u.searchParams.set('utm_content',context);
