@@ -20,7 +20,15 @@
 - Enlaces a Play Store, WhatsApp, Reel y catálogo preservados. El código del Reel y el modal promocional se conservan intactos.
 - Sin cambios en `stations-live.json`, `app-ads.txt`, políticas legales o la app Android.
 
-**Pendiente:** refactor de CSS y layout comercial de la radio, auditoría de accesibilidad y rendimiento, QA visual del propietario y evaluación de datos reales. No se declarará la V4 finalizada con una sola publicación.
+**Segunda entrega — 22 de octubre de 2026:**
+- Nuevo CSS propio para la radio: `assets/radio-v4.css` (identidad vino/crema/cobre, tipografía editorial, secciones simplificadas, responsive).
+- La landing `radio-mexico-de-siempre/index.html` ya usa esa hoja V4; preserva video, popup inicial, WhatsApp, Play y material oficial.
+- JavaScript externalizado **sin alterar su lógica** en `assets/radio-v4.js`, a partir del script previamente aprobado.
+- Se creó `scripts/check-v4.mjs` con 23 aserciones offline (se ejecuta desde un checkout con `node scripts/check-v4.mjs`). Se realizaron además verificaciones estáticas equivalentes dentro de esta sesión.
+- `WEB-ESTRATEGIA.md` actualizado con rutas, compatibilidad y reglas de QA.
+- Los CSS legados (`assets/studio.css` y `assets/site.css`) siguen preservados para revertir la estética si hiciera falta, pero no se cargan en producción V4.
+
+**Pendiente:** revisión visual del propietario, correr el script desde un checkout real con Node, auditoría completa de accesibilidad/performance y evaluación posterior con datos de Play Console. No declarar V4 completa hasta eso.
 
 ## Resumen ejecutivo
 
@@ -301,11 +309,11 @@ La primera entrega debe ser **copywriting + diseño base** antes de programar ot
 - [ ] F1: Brief y guías de tono de Radio México aprobados.
 - [x] F1: Primera pasada completa del copy V4 aplicada en ambos sitios; pendiente aprobación editorial del propietario.
 - [ ] F2: Dos direcciones creativas comparadas por marca.
-- [ ] F2: Tokens y componentes corporativos implementados; pendiente sistema visual de Radio México.
+- [x] F2: Identidades y sistemas CSS V4 separados implementados para estudio y radio; pendientes ajustes de validación visual.
 - [ ] F3: Página corporativa implementada; pendiente comprobación de despliegue y validación visual.
-- [ ] F4: Página Radio implementada y QA técnico aprobado.
-- [ ] F4: Reel/modal/WhatsApp/Play sin regresiones.
-- [ ] F5: CSS/JS refactorizados; accesibilidad y rendimiento revisados.
+- [ ] F4: Página Radio V4 implementada, comprobaciones estáticas pasadas; pendiente validación visual.
+- [x] F4: Estructura y cadenas Reel/modal/WhatsApp/Play protegidas por comprobaciones de regresión.
+- [ ] F5: CSS V4 y JS externo; auditoría integral de accesibilidad/rendimiento aún pendiente.
 - [ ] F6: Despliegue Pages exitoso.
 - [ ] F6: Validación visual aprobada por el propietario.
 - [ ] F6: Línea base y mecanismo de medición documentados.
