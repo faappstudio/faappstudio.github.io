@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - ".github/workflows/v4-a11y-audit.yml"
+      - "scripts/test-a11y-live.mjs"
   workflow_dispatch:
 
 permissions:
