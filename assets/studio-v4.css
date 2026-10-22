@@ -97,6 +97,7 @@ p{max-width:68ch}
 .section-heading h2{margin-top:13px;max-width:720px}
 .section-heading p{color:#627284;font-size:1rem;line-height:1.75;max-width:390px}
 .work-showcase{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);background:#f0f2ef;border:1px solid #dce2de;overflow:hidden}
+.work-visual,.work-copy,.work-icon-row h3{min-width:0}
 .work-visual{min-height:430px;background:linear-gradient(145deg,#13253a,#273d52);padding:33px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:17px;position:relative;overflow:hidden}
 .work-visual::before{content:"01";font-size:18rem;color:#ffffff0a;line-height:1;position:absolute;bottom:-7rem;right:-3rem;font-weight:900;letter-spacing:-.1em;pointer-events:none}
 .work-screenshot{position:relative;width:min(100%,520px);border:9px solid white;box-shadow:0 25px 65px #020d1c5c;transform:rotate(-1.7deg)}
@@ -189,7 +190,7 @@ p{max-width:68ch}
   .hero-caption{align-items:flex-start}
   .section-heading{display:block}
   .section-heading p{margin-top:18px;max-width:660px}
-  .work-showcase{grid-template-columns:1fr}
+  .work-showcase{grid-template-columns:minmax(0,1fr)}
   .work-visual{min-height:345px;padding:28px}
   .work-copy{padding:35px}
   .principles-grid,.about-grid{grid-template-columns:minmax(0,1fr);gap:38px}
