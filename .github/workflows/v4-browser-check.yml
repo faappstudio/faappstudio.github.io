@@ -1,0 +1,34 @@
+name: V4 One-time Chrome Functional QA
+
+on:
+  push:
+    paths:
+      - ".github/workflows/v4-browser-check.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chrome:
+    name: Real Chrome DOM and interaction tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+      - name: Prepare Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Use pre-installed Chrome
+        shell: bash
+        run: |
+          command -v google-chrome
+          google-chrome --version
+      - name: Install browser driver (no bundled Chromium)
+        run: npm install --no-save --no-audit --no-fund playwright-core@1.56.1
+      - name: Test mobile, desktop and portrait desktop-mode
+        env:
+          CHROME_BINARY: /usr/bin/google-chrome
+        run: node scripts/test-live-browser.mjs
