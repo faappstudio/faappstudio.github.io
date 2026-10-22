@@ -84,6 +84,23 @@ try{
         check(textZoom.zoom>=31.5,'Tamaño de texto 200% '+config.id+'/'+screen.id);
         // WCAG 1.4.10 Reflow: content must fit the 320px equivalent
         // checked without requiring no scroll for decorative overflow.
+        if(textZoom.scrollWidth>textZoom.viewportWidth+2){
+          const offenders=await page.evaluate(()=>{
+            const right=window.innerWidth;
+            return Array.from(document.querySelectorAll('body *')).map(el=>{
+              const cs=getComputedStyle(el);
+              if(cs.display==='none'||cs.visibility==='hidden')return null;
+              const box=el.getBoundingClientRect();
+              const excess=Math.max(box.right-right,-box.left);
+              return excess>2?{
+                selector:el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.trim().replace(/\\s+/g,'.'):''),
+                excess:Math.round(excess),left:Math.round(box.left),right:Math.round(box.right),
+                width:Math.round(box.width),text:el.textContent.trim().slice(0,65)
+              }:null;
+            }).filter(Boolean).sort((a,b)=>b.excess-a.excess).slice(0,12);
+          });
+          console.error('OVERFLOW DIAGNOSTIC '+config.id+'/'+screen.id+': '+JSON.stringify(offenders));
+        }
         check(textZoom.scrollWidth<=textZoom.viewportWidth+2,
           'Sin scroll horizontal con texto 200% '+config.id+'/'+screen.id+
           ' (overflow '+(textZoom.scrollWidth-textZoom.viewportWidth)+'px)');
