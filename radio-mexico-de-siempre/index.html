@@ -284,11 +284,18 @@
         frame.allowFullscreen=true;
         frame.referrerPolicy='strict-origin-when-cross-origin';
         frame.loading='eager';
-        // Abrir primero permite medir el ancho real disponible (móvil o escritorio).
+        // El Reel original es vertical (aprox. 9:16).
+        // No calcular el embed usando solo el ANCHO: Facebook renderiza un
+        // video mucho más alto y la parte superior/inferior queda fuera del iframe.
         dialog.showModal();
-        var playerWidth=Math.round(player.getBoundingClientRect().width);
-        var embedWidth=Math.max(220,Math.min(1100,playerWidth||480));
-        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+embedWidth;
+        var area=player.getBoundingClientRect();
+        var frameHeight=Math.max(1,Math.floor(area.height));
+        var frameWidth=Math.max(1,Math.min(Math.floor(area.width),Math.floor(frameHeight*0.52),600));
+        frame.style.width=frameWidth+'px';
+        frame.style.height=frameHeight+'px';
+        frame.setAttribute('width',String(frameWidth));
+        frame.setAttribute('height',String(frameHeight));
+        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+frameWidth;
         player.replaceChildren(frame);
       });
     });
