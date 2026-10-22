@@ -83,7 +83,7 @@ p{max-width:68ch}
 .art-top span{font-size:.64rem;color:#b7c8d8;letter-spacing:.13em;font-weight:800}
 .art-statement{position:absolute;z-index:1;left:32px;bottom:40px;right:30px}
 .art-statement p{font-size:.69rem;font-weight:780;color:#b2c3d3;letter-spacing:.14em;margin-bottom:16px}
-.art-statement strong{font-size:clamp(1.75rem,3vw,2.6rem);line-height:1.17;letter-spacing:-.045em;color:#f3f6f9;font-weight:740}
+.art-statement strong{font-size:clamp(1.75rem,3vw,2.6rem);line-height:1.17;letter-spacing:-.045em;color:#f3f6f9;font-weight:740;overflow-wrap:anywhere}
 .art-statement strong span{color:#f0c98b}
 .art-foot{position:absolute;bottom:18px;right:25px;color:#ffffff75;font-size:.76rem;letter-spacing:.08em}
 .hero-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--outline);padding:22px 0}
@@ -105,7 +105,7 @@ p{max-width:68ch}
 .work-screen-secondary{width:61%;margin:-8px -8% 0 auto;border:6px solid white;box-shadow:0 14px 38px #05162582;transform:rotate(4deg);position:relative}
 .work-screen-secondary img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .work-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,5vw,64px)}
-.work-label{color:#396377}
+.work-label{color:#396377;overflow-wrap:anywhere}
 .work-icon-row{display:flex;align-items:center;gap:17px;margin:23px 0}
 .work-icon-row img{width:68px;height:68px;border-radius:15px}
 .work-copy h3{font-size:clamp(2.1rem,3.2vw,3.4rem);line-height:1.1}
@@ -148,7 +148,7 @@ p{max-width:68ch}
 .about p{color:#58697d;font-size:1.06rem;line-height:1.7}
 .about-quote{padding:43px 36px;background:var(--night);color:white}
 .about-quote span{font-size:.68rem;letter-spacing:.15em;color:#d7be98;font-weight:780}
-.about-quote strong{display:block;font-size:clamp(1.7rem,3vw,2.55rem);letter-spacing:-.045em;line-height:1.25;margin:25px 0 0}
+.about-quote strong{display:block;font-size:clamp(1.7rem,3vw,2.55rem);letter-spacing:-.045em;line-height:1.25;margin:25px 0 0;overflow-wrap:anywhere}
 .about-quote p{font-size:.85rem;color:#c5d0d9;margin-top:20px}
 
 /* Contact and footer */
