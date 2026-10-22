@@ -1,6 +1,6 @@
 # FA App Studio — Plan maestro V4 de marca, UX/UI y arquitectura web
 
-**Estado:** EN EJECUCIÓN · baseline, brief, redacción V4 y primera implementación corporativa iniciadas. No confundir despliegue técnico con aprobación visual.  
+**Estado:** EN EJECUCIÓN · ambas páginas V4 publicadas, Node 54/54 y Lighthouse móvil/escritorio ejecutados. Avance ponderado 85,5 %. Falta aprobación visual y pruebas manuales.  
 **Fecha de auditoría:** 22 de octubre de 2026  
 **Repositorio:** `faappstudio/faappstudio.github.io`, rama `main`  
 **Alcance:** página corporativa, landing de Radio México de Siempre, sistema visual, textos, accesibilidad, rendimiento, SEO, medición y release.  
@@ -24,19 +24,24 @@
 - Nuevo CSS propio para la radio: `assets/radio-v4.css` (identidad vino/crema/cobre, tipografía editorial, secciones simplificadas, responsive).
 - La landing `radio-mexico-de-siempre/index.html` ya usa esa hoja V4; preserva video, popup inicial, WhatsApp, Play y material oficial.
 - JavaScript externalizado **sin alterar su lógica** en `assets/radio-v4.js`, a partir del script previamente aprobado.
-- Se creó `scripts/check-v4.mjs` con 23 aserciones offline (se ejecuta desde un checkout con `node scripts/check-v4.mjs`). Se realizaron además verificaciones estáticas equivalentes dentro de esta sesión.
+- Se creó `scripts/check-v4.mjs` y se amplió posteriormente a 28 controles. Su ejecución con Node 22 y el archivo de 26 pruebas de comportamiento se verificaron en GitHub Actions.
 - `WEB-ESTRATEGIA.md` actualizado con rutas, compatibilidad y reglas de QA.
 - Los CSS legados (`assets/studio.css` y `assets/site.css`) siguen preservados para revertir la estética si hiciera falta, pero no se cargan en producción V4.
 
-**Pendiente:** revisión visual del propietario, correr el script desde un checkout real con Node, auditoría completa de accesibilidad/performance y evaluación posterior con datos de Play Console. No declarar V4 completa hasta eso.
+**Pendiente:** revisión visual del propietario, recorrido manual de accesibilidad y comprobación de conversión real en Play Console. El funcionamiento con Node real y los laboratorios Lighthouse ya están verificados. No declarar V4 completa hasta cerrar lo restante.
 
 ## Avance operativo actualizado — 22 de octubre de 2026
 
-**Estimación global: 79,5 % (~80 %).** Los porcentajes provienen de pesos por fase y entregables aprobables, no de una herramienta de performance. Ver [V4-ESTADO-QA-2026-10-22.md](V4-ESTADO-QA-2026-10-22.md) para la evidencia y el desglose completo.
+**85,5 % (~86 %) de avance; 14,5 % restante**, calculado con los pesos de las siete fases. Ver [reporte de QA y métricas](V4-ESTADO-QA-2026-10-22.md).
 
-**Esta ronda:** accesibilidad mejorada en el Reel (fondo inerte, restauración del foco, descripción para lectores de pantalla), mensajes accesibles al copiar, cuatro contrastes secundarios revisados; 27 verificaciones estructurales y 26 de comportamiento con DOM simulado pasaron en un entorno V8 adaptado. Falta ejecutar los scripts literalmente en Node y realizar QA en navegador real. **No** declarar WCAG, Core Web Vitals ni validación visual completos.
+**Resultados comprobados:**
+- Node.js 22 sobre `main` en GitHub Actions: **28/28 controles estructurales + 26/26 pruebas de comportamiento**, flujo exitoso [V4 Quality Checks](https://github.com/faappstudio/faappstudio.github.io/actions/runs/39871406053).
+- Lighthouse sobre las dos páginas: Radio México obtuvo 100 en rendimiento/accesibilidad/buenas prácticas/SEO tanto en móvil como en escritorio; FA App Studio obtuvo inicialmente 95 de accesibilidad en ambos.
+- Identificados **dos fallos de contraste** en FA App Studio, corregidos con colores más oscuros; segunda auditoría Lighthouse verificó **100 de accesibilidad** y rendimiento de 99 móvil/100 escritorio, con SEO y buenas prácticas 100 ([ver prueba posterior](https://github.com/faappstudio/faappstudio.github.io/actions/runs/39871320280)).
+- Lighthouse es laboratorio automático: **no certifica WCAG completa ni mide INP real**. No sustituye las decisiones de diseño ni la validación visual del propietario.
+- GitHub Pages publicó satisfactoriamente las versiones comprobadas; se conservan las URLs de campaña, WhatsApp, Reel y la política.
 
-**Siguiente puerta:** aprobación visual de las dos páginas por el propietario + pruebas reales de teclado, zoom y rendimiento antes de retirar CSS legado.
+**Siguiente puerta:** revisión visual del propietario en Brave móvil/desktop, pruebas manuales de accesibilidad (teclado, zoom 200 % y TalkBack cuando se pueda), y métricas reales de adquisición antes de eliminar los dos CSS legados.
 
 ## Resumen ejecutivo
 
@@ -318,11 +323,11 @@ La primera entrega debe ser **copywriting + diseño base** antes de programar ot
 - [x] F1: Primera pasada completa del copy V4 aplicada en ambos sitios; pendiente aprobación editorial del propietario.
 - [ ] F2: Dos direcciones creativas comparadas por marca.
 - [x] F2: Identidades y sistemas CSS V4 separados implementados para estudio y radio; pendientes ajustes de validación visual.
-- [ ] F3: Página corporativa implementada; pendiente comprobación de despliegue y validación visual.
-- [ ] F4: Página Radio V4 implementada, comprobaciones estáticas pasadas; pendiente validación visual.
+- [ ] F3: Página corporativa publicada, Lighthouse verificado; falta aprobación visual.
+- [ ] F4: Página Radio publicada, Lighthouse 100/100 en cuatro categorías; falta aprobación visual.
 - [x] F4: Estructura y cadenas Reel/modal/WhatsApp/Play protegidas por comprobaciones de regresión.
-- [ ] F5: CSS/JS V4 y 53 checks en entorno JS adaptado; contraste crítico y foco del Reel mejorados. Pendientes Node real, WCAG y Lighthouse.
-- [ ] F6: Despliegue Pages exitoso.
+- [ ] F5: Node 54/54 real y Lighthouse ejecutado; fallos de contraste corregidos. Pendiente revisión manual de WCAG, zoom y lector de pantalla.
+- [x] F6: Despliegue GitHub Pages exitoso y archivos V4 servidos comprobados.
 - [ ] F6: Validación visual aprobada por el propietario.
 - [ ] F6: Línea base y mecanismo de medición documentados.
 
