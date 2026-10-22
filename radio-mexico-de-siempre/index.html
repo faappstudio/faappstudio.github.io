@@ -268,12 +268,31 @@
         frame.allowFullscreen=true;
         frame.referrerPolicy='strict-origin-when-cross-origin';
         frame.loading='eager';
-        // Facebook tiene contenido 9:16. El iframe define el tamaño del
-        // modal; nunca se estira para llenar un contenedor con alto fijo.
-        dialog.showModal();
-        var actualWidth=Math.round(player.getBoundingClientRect().width)||320;
-        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+Math.max(220,Math.min(426,actualWidth));
+        // Dimensionar vídeo y diálogo en píxeles REALES: Brave en "sitio de
+        // escritorio" puede dejar un <dialog> con un alto implícito enorme.
+        // El iframe ocupa 9:16; el modal solo suma cabecera y enlace (102px).
+        function fitPortrait(){
+          var viewport=window.visualViewport;
+          var availW=Math.min(window.innerWidth||window.screen.width,viewport?viewport.width:Infinity);
+          var availH=Math.min(window.innerHeight||window.screen.height,viewport?viewport.height:Infinity);
+          var videoW=Math.max(80,Math.min(400,Math.floor(availW-26),Math.floor((availH-116)*9/16)));
+          var videoH=Math.round(videoW*16/9);
+          dialog.style.setProperty('--reel-modal-width',(videoW+12)+'px');
+          dialog.style.setProperty('--reel-modal-height',(videoH+102)+'px');
+          player.style.setProperty('--reel-video-width',videoW+'px');
+          player.style.setProperty('--reel-video-height',videoH+'px');
+          frame.setAttribute('width',String(videoW));
+          frame.setAttribute('height',String(videoH));
+          return videoW;
+        }
+        var width=fitPortrait();
+        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+width;
         player.replaceChildren(frame);
+        dialog.showModal();
+        // También responde a rotación/cambio de tamaño, sin volver a reproducir.
+        var onResize=function(){if(dialog.open)fitPortrait()};
+        window.addEventListener('resize',onResize,{passive:true});
+        dialog.addEventListener('close',function(){window.removeEventListener('resize',onResize)},{once:true});
       });
     });
     var closeBtn=document.getElementById('close-reel');
