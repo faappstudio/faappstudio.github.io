@@ -293,9 +293,9 @@ h1,h2,h3{line-height:1.13;letter-spacing:-.04em;overflow-wrap:anywhere}
  .app-gallery-grid{grid-template-columns:1fr;gap:16px}
  .reel-feature{margin-top:31px;padding:25px 19px}
  .reel-feature h3{font-size:2.35rem}
- .reel-feature-actions{display:grid}
- .reel-feature-actions .btn{width:100%}
- .reel-feature-actions .gallery-store-link{text-align:center}
+ .reel-feature-actions{display:grid;grid-template-columns:minmax(0,1fr)}
+ .reel-feature-actions .btn{width:100%;min-width:0;overflow-wrap:anywhere}
+ .reel-feature-actions .gallery-store-link{text-align:center;min-width:0;overflow-wrap:anywhere}
  .story-art{min-height:300px}
  .record{width:min(67%,240px)}
  .story-bullets li{font-size:.87rem}
