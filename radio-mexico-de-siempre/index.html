@@ -199,7 +199,29 @@
 </div>
 <dialog id="reel-dialog" class="reel-dialog" aria-labelledby="reel-title">
   <div class="reel-dialog-top"><strong id="reel-title">Conoce Radio México de Siempre</strong><button type="button" id="close-reel" aria-label="Cerrar video">×</button></div>
-  <div class="reel-dialog-body"><div id="reel-player" class="reel-player"></div><p class="reel-fallback">Si Facebook no muestra el video aquí, puedes <a href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">ver el Reel original en Facebook ↗</a>.</p></div>
+  <div class="reel-dialog-body">
+    <div class="reel-screen">
+      <div id="reel-player" class="reel-player"></div>
+      <p class="reel-fallback">Si Facebook no muestra el video aquí, puedes <a href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">ver el Reel original en Facebook ↗</a>.</p>
+    </div>
+    <aside class="reel-side" aria-label="Información de Radio México de Siempre">
+      <div>
+        <span class="reel-side-eyebrow">UNA APP DE FA APP STUDIO</span>
+        <img class="reel-side-icon" src="https://play-lh.googleusercontent.com/0Pzi9viFcpTtmi1oC8Kt0mcisMkskQ_d4C3DXLcQLcs7gzKYjn7hbidqSkML6eogBOApt_0C9tiRknqLq5o8=w240-h480-rw" width="76" height="76" alt="Radio México de Siempre">
+        <h3>Las rancheras que tanto te gustan, siempre contigo.</h3>
+        <p>Disfruta emisoras de rancheras, mariachi y música mexicana, con controles grandes y sin complicaciones.</p>
+        <div class="reel-side-perks" aria-label="Ventajas de la aplicación">
+          <span>✓ Descarga gratis para Android</span>
+          <span>✓ Escucha desde que la abres</span>
+          <span>✓ Guarda tus emisoras favoritas</span>
+        </div>
+      </div>
+      <div class="reel-side-actions">
+        <a class="reel-side-download" href="https://play.google.com/store/apps/details?id=cl.rancherasfacil.app" data-play-cta target="_blank" rel="noopener noreferrer">Descargar gratis en Google Play ↗</a>
+        <a class="reel-side-original" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">Ver el Reel en Facebook ↗</a>
+      </div>
+    </aside>
+  </div>
 </dialog>
 <dialog class="install-dialog" id="download-modal" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
   <div class="modal-top"><button class="modal-close" type="button" id="close-download" aria-label="Cerrar ventana promocional">×</button></div>
@@ -235,7 +257,7 @@
         u.searchParams.set('utm_source',source);
         u.searchParams.set('utm_medium',medium);
         u.searchParams.set('utm_campaign',campaign);
-        var context=link.closest('.install-dialog')?'modal':link.closest('.mobile-cta')?'sticky':link.closest('.hero')?'hero':link.closest('.app-gallery-section')?'galeria':link.closest('.share-section')?'compartir':link.closest('.final-call')?'final':'navegacion';
+        var context=link.closest('.install-dialog')?'modal':link.closest('.reel-dialog')?'video':link.closest('.mobile-cta')?'sticky':link.closest('.hero')?'hero':link.closest('.app-gallery-section')?'galeria':link.closest('.share-section')?'compartir':link.closest('.final-call')?'final':'navegacion';
         u.searchParams.set('utm_content',context);
         link.href=u.toString();
       }catch(e){}
