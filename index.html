@@ -139,7 +139,24 @@
     }
     @media(max-width:420px){.about-inner{display:block}.about-inner img{margin-bottom:18px}.studio-stamp{padding-right:12px}.studio-stamp img{width:52px;height:52px}}
 
-.reel-link-row{margin:14px 0 0}.reel-preview-link{display:inline-flex;align-items:center;min-height:42px;color:#cbe1ff;font-size:.95rem;font-weight:800;text-decoration:underline;text-underline-offset:4px}.reel-preview-link:hover{color:#fff}
+/* Compartir y ver la demostración: botones compactos y discretos */
+.hero-social{margin:18px 0 0;padding:15px;background:linear-gradient(145deg,#152b44b0,#0c1d32d4);border:1px solid #3d5875;border-radius:17px;max-width:610px}
+.hero-social-heading{color:#f1f5fb;font-weight:750;font-size:.88rem;margin:0 0 11px;line-height:1.45}
+.hero-social-heading span{font-weight:450;color:#c0cfe0;display:block;font-size:.81rem;margin-top:2px}
+.hero-social-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.hero-social-btn{min-width:0;min-height:46px;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border-radius:11px;text-decoration:none;font:inherit;font-size:.82rem;line-height:1.25;font-weight:720;cursor:pointer;transition:background .16s,border-color .16s,transform .16s;text-align:center}
+.hero-social-btn:hover{transform:translateY(-1px)}
+.hero-social-btn svg{height:20px;width:20px;flex:0 0 20px}
+.hero-social-btn>span:not(.hero-arrow){min-width:0}
+.hero-arrow{opacity:.75;font-size:1rem;font-weight:450}
+.hero-facebook{border:1px solid #4b719c;background:#223b59;color:#eaf4ff}
+.hero-facebook:hover{border-color:#82a9d2;background:#2d5076}
+.hero-whatsapp{border:1px solid #317e61;background:#143a30;color:#e6fff1}
+.hero-whatsapp:hover{border-color:#64b18d;background:#1d4b3d}
+.hero-copy{grid-column:1/-1;background:#ffffff09;border:1px solid #425b78;color:#cfdfef;min-height:40px;font-weight:650}
+.hero-copy:hover{background:#ffffff14}
+@media(max-width:430px){.hero-social{padding:13px}.hero-social-actions{grid-template-columns:1fr}.hero-copy{grid-column:auto}.hero-social-btn{justify-content:flex-start;min-height:45px;padding:10px 15px}.hero-arrow{margin-left:auto}}
+@media(prefers-reduced-motion:reduce){.hero-social-btn{transition:none}.hero-social-btn:hover{transform:none}}
 /* Descarga en primer plano: diseño mobile-first */
 .new-hero-section{background:radial-gradient(ellipse at 85% 30%,#26456a90,transparent 49%),linear-gradient(160deg,#101f35,#071222 72%);}
 .conversion-hero{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);align-items:center;gap:42px;padding:66px 0 72px}
@@ -241,8 +258,14 @@ header .shell{min-height:69px}
       <p class="hero-promise">Las rancheras que te gustan, en una radio fácil de usar.</p>
       <p class="hero-detail">Escucha emisoras de música mexicana, mariachi y corridos. Abre la app y comienza a disfrutar sin registros ni menús complicados.</p>
       <a class="button primary download-lead" href="https://play.google.com/store/apps/details?id=cl.rancherasfacil.app" target="_blank" rel="noopener noreferrer" data-download="hero">▶ Instalar gratis en Google Play <span aria-hidden="true">↗</span></a>
-      <p class="reel-link-row"><a class="reel-preview-link" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer" aria-label="Ver en Facebook el Reel de cómo funciona Radio México de Siempre">▶ Ver cómo funciona la radio en 29 segundos ↗</a></p>
-      <p class="reel-link-row"><a class="reel-preview-link" href="https://wa.me/?text=Te%20comparto%20Radio%20M%C3%A9xico%20de%20Siempre%2C%20una%20app%20para%20escuchar%20rancheras%20y%20m%C3%BAsica%20mexicana%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcl.rancherasfacil.app" target="_blank" rel="noopener noreferrer" aria-label="Compartir Radio México de Siempre por WhatsApp">♡ ¿Conoces a alguien que escucha rancheras? Compártele la radio por WhatsApp ↗</a></p>
+      <div class="hero-social" id="compartir" aria-label="Ver y compartir Radio México de Siempre">
+        <p class="hero-social-heading">¿Conoces a alguien que ama las rancheras? <span>Compártele la radio o mira cómo funciona en 29 segundos.</span></p>
+        <div class="hero-social-actions">
+          <a class="hero-social-btn hero-facebook" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.7" y="4.2" width="18.6" height="15.6" rx="4.5"/><path d="m10 8.6 5.3 3.4-5.3 3.4V8.6Z" fill="currentColor" stroke="none"/></svg><span>Ver Reel en Facebook</span><span class="hero-arrow" aria-hidden="true">↗</span></a>
+          <a class="hero-social-btn hero-whatsapp" href="https://wa.me/?text=Te%20comparto%20Radio%20M%C3%A9xico%20de%20Siempre%2C%20una%20app%20para%20escuchar%20rancheras%20y%20m%C3%BAsica%20mexicana%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcl.rancherasfacil.app" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.75a8.6 8.6 0 0 1-12.6 7.65L3 21l1.62-4.72a8.6 8.6 0 1 1 15.88-4.53Z"/><path d="M8.45 8.1c.18-.25.36-.29.56-.28.18 0 .4.01.57.43l.83 1.81c.09.2.08.34-.06.53l-.65.76c.67 1.3 1.74 2.35 3.08 3.02l.79-.97c.16-.19.32-.25.54-.17l1.85.88c.24.12.33.28.27.54-.2.95-1.03 1.57-1.93 1.52-1.74-.09-3.76-1.37-5.33-3.04-1.42-1.53-2.44-3.53-1.88-5.02Z"/></svg><span>Compartir por WhatsApp</span><span class="hero-arrow" aria-hidden="true">↗</span></a>
+          <button class="hero-social-btn hero-copy" id="copy" type="button" aria-label="Copiar enlace de la aplicación"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="8.4" y="8.2" width="11.5" height="12.4" rx="2.2"/><path d="M15.6 8V5.7A2.4 2.4 0 0 0 13.2 3.3H6.4A2.4 2.4 0 0 0 4 5.7V14a2.4 2.4 0 0 0 2.4 2.4h2"/></svg><span id="copy-label">Copiar enlace de la app</span></button>
+        </div>
+      </div>
       <p class="microtrust">✓ Descarga desde Google Play &nbsp;·&nbsp; Gratis con anuncios &nbsp;·&nbsp; Necesita internet</p>
       <div class="hero-perks" aria-label="Beneficios de la radio"><span>♬ Música ranchera</span><span>☆ Emisoras favoritas</span><span>▣ Botones grandes</span></div>
     </div>
@@ -303,23 +326,7 @@ header .shell{min-height:69px}
       </div></div>
     </section>
     <section class="content about" id="estudio"><div class="shell about-inner"><img src="data:image/webp;base64,UklGRlwEAABXRUJQVlA4IFAEAABwHACdASqgAKAAPrVYpU0nJaOiJtbaOOAWiWNu3V5ovfgKE9kb6lNuJzwD6L+qVnrnlBzNtUaCrIGmeYhhCHbpBm3nNvObecxJ9tr2xZnydinMBm1lCkkx0hWKQzC+HmgcEWqy9klGndzaOCq1wGohXR3TdnB7c53Q1b/VuhG5lh12mouxklesQWzfJPXVoyX+pOHui2wuQMH1ypuTOJN4Espz9COK0roopKBna9eYwNi9Oe3FnnEz8ewTlBmJkzUh51JulQzmsSv+N8IcEpD+h+FYeuZh8WJIuhAckgGWgnyLZYgEebfLEjP0AAD+9ubc3+J8kCc0xlygF2rS6UVqZ0oAkfRlL13whmOS4d+4TR0FsTVhS0HpBBVtEjGJ91w7J7rKGgsPDQg7/QC85GFf7NYG/fNPoHXt/fLa6bBshxpmGqxvb1Zd3l9ts2UY4ZQm0Gmy8xVEFblItwFI0lV5CXzZG/fNOjSeehAAAAJWANJ42l8e8DTH6KITgvTn6xh7HLS8II6XIx76Eco46lhShKqlSV6sa+uUZY1MC1TCtwsn0XF8lV5snhWhHGy4PDTXFABanzQ3I08UQAzguNMZLpVRXRSuTjTHQ/v7FnVhxTquzu3MyrttKyuqrm2bpFUzoFqcHWGRPQRooKkSJ6PyC5ZHfdFNv4DpmsWqRqaCHiY4kKRr1U/l1s/05qWZ6z+gtXPwQh7ICk8qRHSMBuB1OCmgkl8zwb2SI3JUw5BVce2Xvmwar3yn7OODXVYo2kV50N50ekZLaPx/ibEUdXNPKuHpuW8dAEQVGTVDPOuUcgFbheE7evemqJiVy6xH0xg3pA+q/tAut5lunIEHVGH2iJbOJtLpDdASplU+RS389zbJYSSbwRtq5dZhbr7pPxp95A5/WlAB6PWk0fpv7v0w1PESq0qlb1CQ5Fj5w2qyTJ/FCva4Hb2pAfOq5lIeIBgkM23V8vSjYu/5F/HmMTvrx9Ws7jP6I7GWZBr5PNl8VqiLTuJUTiU4hXF+B9Ga42UDxNxW6u2APXuw67ndQJ0IDxVfLo+W8i420xkLT4baLHswt2raJJARmoNS5M6O9Upx09JcS63xHdwScPb+o/OOHjT+rBNzB8jS1tINRQlswMF5H5pmNxeuqhtZB9yYx1nbAShmHw9uxgp8hgSCI7a2vzS06WSCrUNjFsldt8cm52K99sGON1p2sL59vyKjkF/Ig2fdR0Kj9nV5+D+ocb50Hn4YKAnQSVsa59KJvHsWgx0WyxTwTfFn3dYwbusx2VxB19q/pavUbsHv8SCvfcS2ReMoKRGehB1yJILiqBUlnm7DejIR21gwV52JK85miRmdBESUHFVAXPEctJvQO8H30oi27x/K6Y0T/fggt9DgLYKviPl5k+IV29QWXOzBT+hIDnwSo3RplbVheQgRsgo/z5MzGUvCHoV4ZxlsaUz+UHFFY5Hv7V0/VIpZAAAAAAA=" alt="Logo oficial de FA App Studio" width="110" height="110" loading="lazy"><div><span class="eyebrow">Conoce al estudio</span><h2>Detrás de cada app hay una idea sencilla.</h2><p>En FA App Studio desarrollamos aplicaciones fáciles de usar, con atención a la claridad, accesibilidad y a las necesidades cotidianas. Nuestro proyecto destacado hoy es Radio México de Siempre, y esta web reúne los enlaces oficiales de nuestra marca.</p><a class="simple-link" href="https://www.facebook.com/people/FA-App-Studio/61595522407823/" rel="noopener noreferrer" target="_blank">Conoce FA App Studio en Facebook ↗</a></div></div></section>
-    <section class="content" id="compartir">
-      <div class="shell">
-        <div class="share-panel">
-          <div>
-            <span class="eyebrow">Que la música siga sonando</span>
-            <h2>¿Conoces a alguien que ama las rancheras?</h2>
-            <p>Compártele el enlace oficial de la radio a través de WhatsApp o de la red que prefieras.</p>
-          </div>
-          <div class="share-actions">
-            <a class="button secondary" href="https://facebook.com/reel/1776460783652969" target="_blank" rel="noopener noreferrer">▶ Ver Reel en Facebook ↗</a>
-            <a class="button whatsapp" href="https://wa.me/?text=Te%20comparto%20Radio%20M%C3%A9xico%20de%20Siempre%2C%20una%20app%20para%20escuchar%20rancheras%20y%20m%C3%BAsica%20mexicana%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcl.rancherasfacil.app" target="_blank" rel="noopener noreferrer">Compartir por WhatsApp ↗</a>
-            <button class="button secondary" type="button" id="copy">Copiar enlace</button>
-          </div>
-        </div>
-        <p class="trust">Radio México de Siempre es gratis con anuncios. Las transmisiones necesitan conexión a internet y la programación depende de cada emisora. Es una aplicación independiente desarrollada por FA App Studio.</p>
-      </div>
-    </section>
+    <div class="shell"><p class="trust">Radio México de Siempre es gratis con anuncios. Las transmisiones necesitan conexión a internet y la programación depende de cada emisora. Es una aplicación independiente desarrollada por FA App Studio.</p></div>
   </main>
   <footer>
     <div class="shell footer-layout">
@@ -332,12 +339,15 @@ header .shell{min-height:69px}
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://faappstudio.github.io/#organization","name":"FA App Studio","url":"https://faappstudio.github.io/","logo":"https://faappstudio.github.io/assets/fa-app-studio-logo.webp","email":"faappstudio@gmail.com","sameAs":["https://www.facebook.com/people/FA-App-Studio/61595522407823/"]},{"@type":"MobileApplication","name":"Radio México de Siempre","operatingSystem":"Android","applicationCategory":"MusicApplication","description":"Radio online con emisoras de rancheras, mariachi, corridos y música mexicana tradicional. Gratuita con anuncios, requiere conexión a internet.","isAccessibleForFree":true,"url":"https://play.google.com/store/apps/details?id=cl.rancherasfacil.app","author":{"@id":"https://faappstudio.github.io/#organization"}}]}</script>
   <script>
     (function(){
-      var b=document.getElementById("copy");
-      if(!b)return;
+      var b=document.getElementById("copy"),label=document.getElementById("copy-label");
+      if(!b||!label)return;
       b.addEventListener("click",function(){
         var url="https://play.google.com/store/apps/details?id=cl.rancherasfacil.app";
-        if(!navigator.clipboard){b.textContent="Mantén pulsado el enlace de Google Play para copiarlo";return}
-        navigator.clipboard.writeText(url).then(function(){b.textContent="¡Enlace copiado!";setTimeout(function(){b.textContent="Copiar enlace"},2400)},function(){b.textContent="Usa el botón de Google Play"})
+        if(!navigator.clipboard||!navigator.clipboard.writeText){label.textContent="Copia el enlace desde Google Play";return}
+        navigator.clipboard.writeText(url).then(function(){
+          label.textContent="¡Enlace copiado!";
+          setTimeout(function(){label.textContent="Copiar enlace de la app"},2400)
+        },function(){label.textContent="No se pudo copiar el enlace"})
       })
     })();
   </script>
