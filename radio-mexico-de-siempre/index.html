@@ -262,9 +262,12 @@
         frame.allowFullscreen=true;
         frame.referrerPolicy='strict-origin-when-cross-origin';
         frame.loading='eager';
-        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width=480';
-        player.replaceChildren(frame);
+        // Abrir primero permite medir el ancho real disponible (móvil o escritorio).
         dialog.showModal();
+        var playerWidth=Math.round(player.getBoundingClientRect().width);
+        var embedWidth=Math.max(220,Math.min(1100,playerWidth||480));
+        frame.src='https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(reelURL)+'&show_text=false&width='+embedWidth;
+        player.replaceChildren(frame);
       });
     });
     var closeBtn=document.getElementById('close-reel');
