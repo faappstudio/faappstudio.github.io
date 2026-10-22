@@ -75,5 +75,29 @@ check('Logo oficial disponible',existsSync(join(root,logo.slice(1))));
 check('Documentos y archivos Android protegidos presentes',privacy.includes('Política de privacidad')&&stations.length>1000&&appAds.length>8);
 check('Sin dependencias de fuentes externas',!companyCss.includes('@import')&&!radioCss.includes('@import'));
 check('Movilidad y reducción de movimiento contempladas',radioCss.includes('@media(max-width:580px)')&&radioCss.includes('prefers-reduced-motion'));
+check('Reel bloquea el fondo y lo restaura al cerrar',
+  radioJs.includes('setBackgroundInert(true)')&&radioJs.includes('setBackgroundInert(false)'));
+check('Reel y copiar enlace anuncian su estado',
+  radio.includes('aria-describedby="reel-accessibility-description"')&&
+  radio.includes('id="copy-label" aria-live="polite"'));
+check('Descripción de Reel solo para lectores de pantalla',
+  radio.includes('class="sr-only"')&&radioCss.includes('.sr-only{'));
+function luminance(hex){
+  const parts=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255)
+    .map(c=>c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4));
+  return .2126*parts[0]+.7152*parts[1]+.0722*parts[2];
+}
+function ratio(fg,bg){
+  const a=luminance(fg),b=luminance(bg);
+  return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+}
+const contrastPairs=[
+  ['#745a49','#fdfaf4'], // microcopy de marca sobre papel
+  ['#695447','#fcf6ec'], // descripción de imagen de app
+  ['#5a6572','#ffffff'], // nota de instalación
+  ['#79562d','#ffffff']  // etiqueta de instalación
+];
+check('Contraste AA de textos secundarios críticos (>=4,5:1)',
+  contrastPairs.every(([fg,bg])=>radioCss.includes(fg)&&ratio(fg,bg)>=4.5));
 console.log('\n'+passed+' controles aprobados; '+failures+' fallidos');
 if(failures)process.exitCode=1;
