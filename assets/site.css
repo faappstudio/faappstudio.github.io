@@ -213,8 +213,8 @@ h1,h2,h3,p{margin-top:0}
 .reel-poster-time{position:absolute;bottom:11px;right:12px;background:#0d2035dc;color:#fff;padding:5px 9px;border-radius:8px;font-size:.73rem}
 /* El Reel usa casi toda la pantalla disponible, sin recortar ni deformar el video. */
 .reel-dialog{
-  width:min(980px,calc(100vw - 28px));
-  height:min(93dvh,950px);
+  width:min(1240px,calc(100vw - 48px));
+  height:min(92dvh,840px);
   max-width:none;
   max-height:calc(100dvh - 16px);
   margin:auto;
@@ -252,9 +252,16 @@ h1,h2,h3,p{margin-top:0}
   cursor:pointer;
 }
 .reel-dialog-body{
-  padding:10px 12px 12px;
+  padding:12px;
   flex:1 1 auto;
   min-height:0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 322px;
+  gap:13px;
+}
+.reel-screen{
+  min-height:0;
+  min-width:0;
   display:flex;
   flex-direction:column;
   gap:9px;
@@ -274,6 +281,42 @@ h1,h2,h3,p{margin-top:0}
   min-height:0;
   border:0;
 }
+.reel-side{
+  min-height:0;
+  min-width:0;
+  padding:26px 24px 23px;
+  border:1px solid #e0e7eb;
+  border-radius:13px;
+  background:linear-gradient(155deg,#f7f9fa 15%,#ebf2f6 100%);
+  color:#183049;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:21px;
+  overflow-y:auto;
+}
+.reel-side-eyebrow{display:block;font-size:.7rem;letter-spacing:.12em;color:#677f95;font-weight:850;margin-bottom:25px}
+.reel-side-icon{width:76px;height:76px;object-fit:cover;border-radius:19px;box-shadow:0 10px 25px #0a29452e;margin-bottom:25px}
+.reel-side h3{font-size:clamp(1.55rem,2.2vw,2.15rem);line-height:1.17;letter-spacing:-.05em;margin:0 0 15px}
+.reel-side p{color:#62758a;font-size:.91rem;line-height:1.66;margin:0}
+.reel-side-perks{display:grid;gap:11px;margin-top:23px;font-size:.84rem;color:#295b48;font-weight:740}
+.reel-side-actions{display:grid;gap:13px}
+.reel-side-download{
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 16px;
+  min-height:55px;
+  border-radius:12px;
+  background:#122d48;
+  color:#fff;
+  font-weight:820;
+  font-size:.9rem;
+  text-decoration:none;
+}
+.reel-side-download:hover{background:#2d5372}
+.reel-side-original{text-align:center;color:#3d6180;font-size:.82rem;font-weight:740;text-underline-offset:4px}
 .reel-fallback{font-size:.84rem;color:#526578;line-height:1.55;margin:13px 3px 0}
 .reel-fallback a{color:#1e5e92;font-weight:800;text-underline-offset:3px}
 @media(max-width:800px){
@@ -281,6 +324,14 @@ h1,h2,h3,p{margin-top:0}
 .app-gallery-intro{display:block}
 .app-gallery-intro>.gallery-store-link{margin-top:13px}
 .reel-feature{grid-template-columns:1fr;padding:27px;gap:24px}
+}
+/* En tablet y móvil dejamos el Reel como experiencia de reproducción prioritaria. */
+@media(max-width:940px){
+.reel-dialog{width:min(740px,calc(100vw - 24px));height:min(93dvh,900px)}
+.reel-dialog-body{display:flex;flex-direction:column;padding:10px}
+.reel-screen{flex:1;min-height:0}
+.reel-side{display:none}
+.reel-player{flex:1}
 }
 @media(max-width:580px){
 .app-gallery-section{padding:55px 0}
