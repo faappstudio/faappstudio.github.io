@@ -50,7 +50,7 @@ h1,h2,h3{line-height:1.13;letter-spacing:-.04em}
 .brand-logo{flex:none;width:45px;height:45px;object-fit:cover;border-radius:9px}
 .brand-title{font-size:.96rem;font-weight:880;letter-spacing:.095em;line-height:1.11;white-space:nowrap;color:var(--wine-deep)}
 .brand-title>span{color:var(--clay)}
-.brand-title small{display:block;font-size:.63rem;margin-top:6px;font-weight:600;letter-spacing:.01em;color:#907a69}
+.brand-title small{display:block;font-size:.63rem;margin-top:6px;font-weight:600;letter-spacing:.01em;color:#745a49}
 .header-nav{display:flex;gap:23px;align-items:center;margin-left:auto}
 .header-nav a{text-decoration:none;font-size:.82rem;font-weight:740;color:#716052;white-space:nowrap}
 .header-nav a:hover{color:var(--wine)}
@@ -103,7 +103,7 @@ h1,h2,h3{line-height:1.13;letter-spacing:-.04em}
 .showcase-footer-icon{display:grid;place-items:center;color:var(--clay);flex:none}
 .showcase-footer-icon svg{width:23px;height:23px}
 .showcase-footer strong{display:block;font-size:.85rem;color:#5d3d31}
-.showcase-footer small{display:block;color:#8b786b;font-size:.75rem}
+.showcase-footer small{display:block;color:#695447;font-size:.75rem}
 .hero-highlights{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #d7b8944f}
 .hero-highlights article{display:flex;align-items:center;gap:14px;padding:22px 19px 25px;border-right:1px solid #d7b8944f}
 .hero-highlights article:last-child{border-right:0}
@@ -332,7 +332,7 @@ h1,h2,h3{line-height:1.13;letter-spacing:-.04em}
 .modal-close:hover{background:#e4eaf0}
 .modal-content{text-align:center;padding:0 30px 28px}
 .modal-icon{width:82px;height:82px;margin:0 auto 18px;border-radius:21px;box-shadow:0 8px 30px #1027412f;border:2px solid #fff;object-fit:cover}
-.modal-kicker{font-size:.68rem;letter-spacing:.13em;font-weight:880;color:#9d723d;margin-bottom:8px}
+.modal-kicker{font-size:.68rem;letter-spacing:.13em;font-weight:880;color:#79562d;margin-bottom:8px}
 .install-dialog h2{font-size:clamp(1.66rem,5vw,2rem);line-height:1.2;letter-spacing:-.04em;margin:0 0 11px}
 .modal-description{font-size:.94rem;line-height:1.62;color:#617184;max-width:380px;margin:0 auto 24px}
 .modal-actions{display:grid;gap:10px}
@@ -344,7 +344,7 @@ h1,h2,h3{line-height:1.13;letter-spacing:-.04em}
 .modal-whatsapp:hover{background:#11733e}
 .modal-browse{border:0;background:transparent;color:#667588;cursor:pointer;font-size:.86rem;font-weight:690;padding:10px}
 .modal-browse:hover{color:#1c3859}
-.modal-note{color:#7a8897;font-size:.73rem;margin:10px 0 0}
+.modal-note{color:#5a6572;font-size:.73rem;margin:10px 0 0}
 
 /* Approved portrait Reel lightbox: dimensions unchanged from stable version. */
 /* Reel: visor ligero de tamaño explícito, separado del <dialog> promocional. */
