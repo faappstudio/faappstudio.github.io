@@ -5,6 +5,8 @@ on:
     paths:
       - ".github/workflows/v4-a11y-audit.yml"
       - "scripts/test-a11y-live.mjs"
+      - "assets/studio-v4.css"
+      - "assets/radio-v4.css"
   workflow_dispatch:
 
 permissions:
