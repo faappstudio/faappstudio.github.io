@@ -30,6 +30,14 @@
 
 **Pendiente:** revisión visual del propietario, correr el script desde un checkout real con Node, auditoría completa de accesibilidad/performance y evaluación posterior con datos de Play Console. No declarar V4 completa hasta eso.
 
+## Avance operativo actualizado — 22 de octubre de 2026
+
+**Estimación global: 79,5 % (~80 %).** Los porcentajes provienen de pesos por fase y entregables aprobables, no de una herramienta de performance. Ver [V4-ESTADO-QA-2026-10-22.md](V4-ESTADO-QA-2026-10-22.md) para la evidencia y el desglose completo.
+
+**Esta ronda:** accesibilidad mejorada en el Reel (fondo inerte, restauración del foco, descripción para lectores de pantalla), mensajes accesibles al copiar, cuatro contrastes secundarios revisados; 27 verificaciones estructurales y 26 de comportamiento con DOM simulado pasaron en un entorno V8 adaptado. Falta ejecutar los scripts literalmente en Node y realizar QA en navegador real. **No** declarar WCAG, Core Web Vitals ni validación visual completos.
+
+**Siguiente puerta:** aprobación visual de las dos páginas por el propietario + pruebas reales de teclado, zoom y rendimiento antes de retirar CSS legado.
+
 ## Resumen ejecutivo
 
 La arquitectura comercial actual —marca principal + página individual de aplicación— es acertada. La V4 debe conservarla y elevar la calidad de diseño editorial, personalidad, claridad y conversión. El objetivo no es «parecer una web tecnológica genérica», sino construir dos expresiones de una marca real:
@@ -313,7 +321,7 @@ La primera entrega debe ser **copywriting + diseño base** antes de programar ot
 - [ ] F3: Página corporativa implementada; pendiente comprobación de despliegue y validación visual.
 - [ ] F4: Página Radio V4 implementada, comprobaciones estáticas pasadas; pendiente validación visual.
 - [x] F4: Estructura y cadenas Reel/modal/WhatsApp/Play protegidas por comprobaciones de regresión.
-- [ ] F5: CSS V4 y JS externo; auditoría integral de accesibilidad/rendimiento aún pendiente.
+- [ ] F5: CSS/JS V4 y 53 checks en entorno JS adaptado; contraste crítico y foco del Reel mejorados. Pendientes Node real, WCAG y Lighthouse.
 - [ ] F6: Despliegue Pages exitoso.
 - [ ] F6: Validación visual aprobada por el propietario.
 - [ ] F6: Línea base y mecanismo de medición documentados.
