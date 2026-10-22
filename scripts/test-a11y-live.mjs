@@ -100,6 +100,20 @@ try{
             }).filter(Boolean).sort((a,b)=>b.excess-a.excess).slice(0,12);
           });
           console.error('OVERFLOW DIAGNOSTIC '+config.id+'/'+screen.id+': '+JSON.stringify(offenders));
+          if(offenders.length===0){
+            const widths=await page.evaluate(()=>({
+              viewport:window.innerWidth,root:document.documentElement.scrollWidth,body:document.body.scrollWidth,
+              nodes:Array.from(document.querySelectorAll('body *')).map(el=>{
+                const cs=getComputedStyle(el),r=el.getBoundingClientRect();
+                return {
+                  name:el.tagName.toLowerCase()+'.'+String(el.className||'').replace(/\\s+/g,'.'),
+                  width:el.clientWidth,scroll:el.scrollWidth,excess:el.scrollWidth-el.clientWidth,
+                  x:Math.round(r.x),right:Math.round(r.right),overflow:cs.overflowX
+                }
+              }).filter(n=>n.excess>10).sort((a,b)=>b.excess-a.excess).slice(0,18)
+            }));
+            console.error('INTERNAL SCROLL DIAGNOSTIC '+config.id+'/'+screen.id+': '+JSON.stringify(widths));
+          }
         }
         check(textZoom.scrollWidth<=textZoom.viewportWidth+2,
           'Sin scroll horizontal con texto 200% '+config.id+'/'+screen.id+
