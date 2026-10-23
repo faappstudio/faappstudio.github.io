@@ -99,15 +99,28 @@ a:focus-visible,button:focus-visible{outline:3px solid #a8692b;outline-offset:4p
 .section-heading p{font-size:1rem;line-height:1.7;color:var(--muted)}
 .work-showcase{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);overflow:hidden;border-radius:36px;background:#eff4f0}
 .work-visual{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:16px;min-width:0;min-height:440px;padding:44px 36px;
+  display:flex;flex-direction:row;align-items:center;justify-content:center;
+  gap:0;min-width:0;min-height:460px;padding:34px 30px;
   background:#264b4b;border-radius:36px 140px 36px 36px;
   position:relative;overflow:hidden;
 }
 .work-visual::before{content:"";position:absolute;top:-165px;right:-150px;width:440px;height:440px;border:1px solid #e8f3e42a;border-radius:50%;box-shadow:0 0 0 55px #e8f3e40b;pointer-events:none}
-.work-screenshot,.work-screen-secondary{width:min(100%,510px);position:relative;z-index:1;flex:none;border-radius:17px;overflow:hidden;background:#fff;box-shadow:0 23px 55px #061f2460}
-.work-screenshot img,.work-screen-secondary img{display:block;width:100%;height:auto;aspect-ratio:1052/592;object-fit:contain}
-.work-screen-secondary{width:min(66%,330px);align-self:flex-end;margin-top:-11px;border:5px solid #f5f7f2}
+.work-screenshot,.work-screen-secondary{
+  position:relative;z-index:1;flex:none;display:block;overflow:hidden;
+  background:#f7ecda;border:7px solid #152e32;
+  border-radius:25px;box-shadow:0 22px 45px #061f2460;
+  aspect-ratio:9/16;
+}
+.work-screenshot img,.work-screen-secondary img{
+  display:block;width:100%;height:100%;aspect-ratio:auto;
+  object-fit:cover;object-position:center;
+}
+.work-screenshot{width:min(52%,238px)}
+.work-screen-secondary{
+  width:min(42%,187px);align-self:center;
+  margin:76px 0 0 -20px;
+  border-color:#344a48;transform:rotate(5deg);
+}
 .work-copy{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,5vw,65px)}
 .work-label{color:#416a64}
 .work-icon-row{display:flex;align-items:center;gap:17px;margin:24px 0 26px}
@@ -189,7 +202,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #a8692b;outline-offset:4p
   .section{padding:82px 0}
   .section-heading{grid-template-columns:minmax(0,1fr);gap:16px}
   .work-showcase{grid-template-columns:minmax(0,1fr)}
-  .work-visual{min-height:345px;border-radius:35px 90px 35px 35px}
+  .work-visual{min-height:405px;border-radius:35px 90px 35px 35px}
   .work-copy{padding:34px}
   .principles-grid,.about-grid{grid-template-columns:minmax(0,1fr);gap:35px}
   .contact-grid{grid-template-columns:minmax(0,1fr);gap:30px}
@@ -218,9 +231,10 @@ a:focus-visible,button:focus-visible{outline:3px solid #a8692b;outline-offset:4p
   .section{padding:68px 0}
   .section-heading{margin-bottom:28px}
   .work-showcase{border-radius:25px}
-  .work-visual{min-height:263px;padding:24px 21px;border-radius:25px 66px 25px 25px}
-  .work-screenshot{border-radius:12px}
-  .work-screen-secondary{border-width:3px;border-radius:10px}
+  .work-visual{min-height:345px;padding:21px 16px;border-radius:25px 66px 25px 25px}
+  .work-screenshot{border-radius:20px}
+  .work-screen-secondary{border-radius:18px;margin-left:-12px;margin-top:47px}
+  .work-screen-secondary{border-width:5px}
   .work-copy{padding:26px 21px 29px}
   .work-icon-row{gap:14px}
   .work-icon-row img{width:53px;height:53px}
@@ -240,5 +254,20 @@ a:focus-visible,button:focus-visible{outline:3px solid #a8692b;outline-offset:4p
   .footer-nav{justify-content:flex-start}
   .footer-bottom{display:block}
   .footer-bottom span{display:block}
+}
+
+/* Portrait browser in desktop-site mode: use spacious single-column composition. */
+@media (min-width:801px) and (max-width:1200px) and (max-aspect-ratio:4/5){
+  html{font-size:clamp(23px,2.8vw,30px)}
+  .shell{width:min(760px,calc(100% - 50px))}
+  .site-header .nav,.site-header .header-action{display:none}
+  .hero-inner,.work-showcase,.principles-grid,.about-grid,.contact-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-inner{padding:58px 0;gap:32px}
+  .hero h1{font-size:clamp(3rem,6vw,4.4rem)}
+  .hero-art{min-height:450px;border-radius:90px 25px 75px 25px}
+  .work-visual{min-height:520px;border-radius:35px 100px 35px 35px}
+  .work-copy{padding:34px 32px}
+  .section-heading{grid-template-columns:minmax(0,1fr)}
+  .contact-actions{justify-content:flex-start}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
