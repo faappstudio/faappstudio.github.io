@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - ".github/workflows/v5-design-review.yml"
+      - "scripts/capture-design-v5.mjs"
   workflow_dispatch:
 
 permissions:
