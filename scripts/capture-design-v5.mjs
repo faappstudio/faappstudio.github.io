@@ -11,7 +11,9 @@ try{
     {name:'studio-desktop',url:'https://faappstudio.github.io/',width:1440,height:900},
     {name:'studio-mobile',url:'https://faappstudio.github.io/',width:390,height:844,mobile:true},
     {name:'radio-desktop',url:'https://faappstudio.github.io/radio-mexico-de-siempre/',width:1440,height:900},
-    {name:'radio-mobile',url:'https://faappstudio.github.io/radio-mexico-de-siempre/',width:390,height:844,mobile:true}
+    {name:'radio-mobile',url:'https://faappstudio.github.io/radio-mexico-de-siempre/',width:390,height:844,mobile:true},
+    {name:'studio-brave-portrait-desktop',url:'https://faappstudio.github.io/',width:980,height:1600,mobile:true},
+    {name:'radio-brave-portrait-desktop',url:'https://faappstudio.github.io/radio-mexico-de-siempre/',width:980,height:1600,mobile:true}
   ];
   for(const c of cases){
     const context=await browser.newContext({
