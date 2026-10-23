@@ -271,3 +271,14 @@ a:focus-visible,button:focus-visible{outline:3px solid #a8692b;outline-offset:4p
   .contact-actions{justify-content:flex-start}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* FA App Studio: official social profiles — compact editorial treatment */
+.contact-actions{flex-direction:column;align-items:stretch;justify-content:flex-end}
+.contact-social-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:9px}
+.contact-social-link{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:45px;padding:10px 14px;background:#ffffff0d;border:1px solid #a4c8bd80;border-radius:13px;color:#f7f7f2;font-family:var(--sans);font-size:.91rem;font-weight:600;line-height:1.2;text-decoration:none;transition:background .15s,border-color .15s}
+.contact-social-link:hover{background:#ffffff20;border-color:#e4f2e9}
+.contact-social-link:focus-visible{outline:3px solid #f4d3a8;outline-offset:3px}
+.contact-social-link svg{width:19px;height:19px;flex:none}
+@media(max-width:1000px){.contact-social-links{justify-content:flex-start}}
+@media(max-width:520px){.contact-social-links{gap:8px}.contact-social-link{padding:10px 12px;font-size:.86rem}.contact-actions>.button{width:100%}}
+@media(prefers-reduced-motion:reduce){.contact-social-link{transition:none}}
