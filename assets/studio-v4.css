@@ -86,8 +86,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #a8692b;outline-offset:4p
 .art-statement{position:absolute;z-index:2;left:clamp(24px,4vw,49px);right:20px;bottom:70px}
 .art-statement p{font-size:.75rem;letter-spacing:.09em;font-weight:700;color:#345c55;margin-bottom:17px}
 .art-statement strong{font-family:var(--display);font-size:clamp(2.15rem,3.9vw,3.95rem);font-weight:600;letter-spacing:-.065em;line-height:1.13;color:#183f3e;overflow-wrap:anywhere}
-.art-statement strong span{color:#bd764a}
-.art-foot{position:absolute;right:32px;bottom:27px;color:#427467;font-size:.81rem;font-weight:700}
+.art-statement strong span{color:#87502d}
+.art-foot{position:absolute;right:32px;bottom:27px;color:#285a50;font-size:.81rem;font-weight:700}
 .hero-caption{border-top:1px solid var(--stroke);padding:23px 0;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .hero-caption p{font-size:.93rem;color:#506460}
 .hero-caption a{font-weight:700;color:#28635a;font-size:.93rem}
@@ -153,7 +153,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #a8692b;outline-offset:4p
 .principles-intro{font-size:1.06rem;color:#485e63;line-height:1.75}
 .principle-list{border-top:1px solid #bdcbc4}
 .principle{display:grid;grid-template-columns:46px minmax(0,1fr);gap:18px;padding:27px 0;border-bottom:1px solid #bdcbc4}
-.principle-number{font-family:var(--display);font-size:.94rem;color:#647f71;font-weight:700}
+.principle-number{font-family:var(--display);font-size:.94rem;color:#3e6654;font-weight:700}
 .principle h3{font-size:clamp(1.23rem,2vw,1.56rem);margin-bottom:11px}
 .principle p{font-size:1rem;color:#455c5e;line-height:1.72}
 /* Studio about */
