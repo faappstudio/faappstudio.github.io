@@ -92,18 +92,17 @@ function ratio(fg,bg){
   return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
 }
 const contrastPairs=[
-  ['#745a49','#fdfaf4'], // microcopy de marca sobre papel
-  ['#695447','#fcf6ec'], // descripción de imagen de app
-  ['#5a6572','#ffffff'], // nota de instalación
-  ['#79562d','#ffffff']  // etiqueta de instalación
+  ['#6a554b','#fffaf0'], // subtítulo sobre papel de la radio
+  ['#715f55','#faf3e7'], // ventajas en portada
+  ['#765f55','#fbf7ef']  // marca en navegación
 ];
-check('Contraste AA de textos secundarios críticos (>=4,5:1)',
+check('Contraste AA de la identidad Radio V5 (>=4,5:1)',
   contrastPairs.every(([fg,bg])=>radioCss.includes(fg)&&ratio(fg,bg)>=4.5));
 const studioContrastPairs=[
-  ['#566a7c','#ffffff'], // nota de próximos productos
-  ['#4d6273','#edf0eb']  // introducción a nuestra forma de trabajar
+  ['#52636a','#fffefa'], // texto secundario sobre papel
+  ['#485e63','#eff2ee']  // introducción sobre fondo editorial
 ];
-check('Contraste AA corporativo corregido según Lighthouse (>=4,5:1)',
+check('Contraste AA de la identidad corporativa V5 (>=4,5:1)',
   studioContrastPairs.every(([fg,bg])=>companyCss.includes(fg)&&ratio(fg,bg)>=4.5));
 console.log('\n'+passed+' controles aprobados; '+failures+' fallidos');
 if(failures)process.exitCode=1;
