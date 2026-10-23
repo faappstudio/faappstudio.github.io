@@ -1,0 +1,38 @@
+name: V5 One-time Visual Review Captures
+
+on:
+  push:
+    paths:
+      - ".github/workflows/v5-design-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  snapshots:
+    name: Chrome desktop/mobile design screenshots
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Browser version
+        run: google-chrome --version
+      - name: Install Playwright driver
+        run: npm install --no-save --no-audit --no-fund playwright-core@1.56.1
+      - name: Capture published layouts
+        env:
+          CHROME_BINARY: /usr/bin/google-chrome
+        run: node scripts/capture-design-v5.mjs
+      - name: Store design captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-editorial-layout-review
+          path: audit-results/v5/
+          retention-days: 5
