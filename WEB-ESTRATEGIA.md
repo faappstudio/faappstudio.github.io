@@ -24,7 +24,7 @@ El sitio personal antiguo no se modifica, porque la aplicación usa su archivo `
 - `radio-mexico-de-siempre/index.html`: landing exclusiva.
 - `assets/radio-v4.css`: sistema visual cálido de Radio México; mantiene sin rediseñar las reglas funcionales aprobadas del Reel y modal inicial. `assets/site.css` queda como referencia legada, no se sirve en la página V4.
 - `assets/radio-v4.js`: comportamiento del video de Facebook, UTMs, copiar enlace y modal inicial, externalizado sin cambiar la lógica que estaba aprobada.
-- La sección `#vistas` muestra las **dos imágenes oficiales publicadas en Google Play**, sin recrear ni alterar la UI de la aplicación.
+- La sección `#vistas` muestra dos capturas reales de la aplicación proporcionadas por el propietario: selección de emisoras y reproductor. Se conservan completas, sin recortar la UI.
 - El Reel real es `https://facebook.com/reel/1776460783652969`. La página intenta mostrarlo en un reproductor de Facebook **solo cuando el usuario hace clic**; el enlace original está siempre visible como alternativa, por si el embed no es compatible o está bloqueado. No usar reproducción automática.
 - El modal inicial aparece de inmediato y mantiene dos CTA: instalar en Google Play y compartir por WhatsApp.
 - **No modificar el texto aprobado para compartir por WhatsApp sin autorización.** Los tres enlaces contienen el mismo mensaje: comienza con `🇨🇱🤝🏻🇲🇽 🎶❤️`, incluye `💛 ¡Es GRATIS!` y termina con el vínculo oficial de Play sin parámetros añadidos.
