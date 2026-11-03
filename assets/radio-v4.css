@@ -96,7 +96,7 @@ h1,h2,h3{line-height:1.08;letter-spacing:-.047em;overflow-wrap:anywhere}
 .showcase-heading strong{display:block;font-size:1rem;font-weight:700;color:#3d302d}
 .showcase-heading small{display:block;font-size:.85rem;color:#735f51}
 .showcase-pill{font-size:.72rem;color:#8c5142;border:1px solid #d9bbaa;border-radius:100px;padding:5px 10px;font-weight:700}
-.showcase-photo{display:block;width:min(100% - 24px,250px);height:auto;aspect-ratio:9/16;object-fit:cover;object-position:center;border:7px solid #32282a;border-radius:25px;background:#e7d9c9;margin:0 auto;box-shadow:0 9px 20px #49332b26}
+.showcase-photo{display:block;width:min(100% - 24px,250px);height:auto;aspect-ratio:1080/2331;object-fit:contain;object-position:center;border:7px solid #32282a;border-radius:25px;background:#432718;margin:0 auto;box-shadow:0 9px 20px #49332b26}
 .showcase-footer{display:flex;align-items:center;gap:12px;padding:19px 13px 14px}
 .showcase-footer-icon{flex:none;color:#a85e49}
 .showcase-footer-icon svg{width:24px;height:24px}
