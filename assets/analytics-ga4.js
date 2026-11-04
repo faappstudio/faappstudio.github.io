@@ -1,8 +1,8 @@
 /*
  * FA App Studio · Google Analytics 4
  *
- * Inserta el ID de medición web (G-...) en MEASUREMENT_ID para habilitar GA4.
- * Mientras esté vacío, no solicita recursos externos ni almacena datos.
+ * ID de medición GA4 para ambas páginas públicas de FA App Studio.
+ * La descarga de la etiqueta es asíncrona y pospuesta hasta que termine la carga.
  * Se inicia después del evento load y cuando el navegador está libre:
  * nunca bloquea el HTML, las imágenes, el audio ni la navegación.
  *
@@ -12,7 +12,7 @@
 (function () {
   'use strict';
 
-  var MEASUREMENT_ID = '';
+  var MEASUREMENT_ID = 'G-GV20MGFDCZ';
   if (!/^G-[A-Z0-9]{6,}$/.test(MEASUREMENT_ID)) return;
   if (navigator.globalPrivacyControl === true || navigator.doNotTrack === '1') return;
 
@@ -21,6 +21,12 @@
   window.gtag = window.gtag || function () {
     window.dataLayer.push(arguments);
   };
+  // Medición de visitas sin activar almacenamiento publicitario ni personalización de anuncios.
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
   window.gtag('js', new Date());
   window.gtag('config', MEASUREMENT_ID);
 
