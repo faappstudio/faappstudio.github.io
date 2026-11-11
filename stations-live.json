@@ -1,8 +1,7 @@
 {
     "browseFilters":  [
                           "ranchera",
-                          "musica-mexicana",
-                          "cumbia"
+                          "musica-mexicana"
                       ],
     "categories":  [
                        {
@@ -134,11 +133,11 @@
                        }
                    ],
     "schemaVersion":  1,
-    "catalogVersion":  23,
+    "catalogVersion":  24,
     "minAppVersionCode":  12,
     "refreshAfterMinutes":  30,
-    "generatedAt":  "2026-11-01T16:25:35Z",
-    "version":  23,
+    "generatedAt":  "2026-11-11T16:12:04Z",
+    "version":  24,
     "stations":  [
                      {
                          "id":  "solo-rancheras",
@@ -1653,6 +1652,30 @@
                          "enabled":  true,
                          "streams":  [
                                          "https://sonic-us.fhost.cl/9922/stream"
+                                     ]
+                     },
+                     {
+                         "id":  "radio-la-rancherita-osorno",
+                         "name":  "Radio La Rancherita Osorno",
+                         "style":  "Rancheras, regional mexicano y cumbias",
+                         "group":  "campo",
+                         "categoryIds":  [
+                                             "ranchera",
+                                             "musica-mexicana",
+                                             "cumbia"
+                                         ],
+                         "genres":  [
+                                        "ranchera",
+                                        "musica-mexicana",
+                                        "cumbia",
+                                        "tropical"
+                                    ],
+                         "country":  "CL",
+                         "musicFocus":  "high",
+                         "priority":  260,
+                         "enabled":  true,
+                         "streams":  [
+                                         "https://archi-us.digitalproserver.com/caramelo-fm-los-sauces.aac"
                                      ]
                      }
                  ]
