@@ -133,11 +133,11 @@
                        }
                    ],
     "schemaVersion":  1,
-    "catalogVersion":  26,
+    "catalogVersion":  27,
     "minAppVersionCode":  12,
     "refreshAfterMinutes":  30,
-    "generatedAt":  "2026-11-11T18:08:31Z",
-    "version":  26,
+    "generatedAt":  "2026-11-11T18:52:04Z",
+    "version":  27,
     "stations":  [
                      {
                          "id":  "solo-rancheras",
@@ -1594,6 +1594,44 @@
                                      ]
                      },
                      {
+                         "id":  "la-poderosa-rengo",
+                         "name":  "La Poderosa Rengo",
+                         "style":  "Ranchera chilena • O’Higgins",
+                         "group":  "campo",
+                         "categoryIds":  [
+                                             "ranchera"
+                                         ],
+                         "genres":  [
+                                        "ranchera"
+                                    ],
+                         "country":  "CL",
+                         "musicFocus":  "high",
+                         "priority":  255,
+                         "enabled":  true,
+                         "streams":  [
+                                         "https://streaming.viphosting.cl:8022/poderosarengo"
+                                     ]
+                     },
+                     {
+                         "id":  "fm-centro-gorbea",
+                         "name":  "FM Centro Gorbea",
+                         "style":  "Ranchera chilena • La Araucanía",
+                         "group":  "campo",
+                         "categoryIds":  [
+                                             "ranchera"
+                                         ],
+                         "genres":  [
+                                        "ranchera"
+                                    ],
+                         "country":  "CL",
+                         "musicFocus":  "high",
+                         "priority":  265,
+                         "enabled":  true,
+                         "streams":  [
+                                         "https://s02.azuracast.cl/radio/8210/fmcentro"
+                                     ]
+                     },
+                     {
                          "id":  "rancho-grande-fm",
                          "name":  "Rancho Grande FM",
                          "style":  "Rancheras mexicanas clásicas • música de antaño",
@@ -1704,3 +1742,4 @@
                      }
                  ]
 }
+
