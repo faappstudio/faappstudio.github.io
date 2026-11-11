@@ -133,11 +133,11 @@
                        }
                    ],
     "schemaVersion":  1,
-    "catalogVersion":  24,
+    "catalogVersion":  25,
     "minAppVersionCode":  12,
     "refreshAfterMinutes":  30,
-    "generatedAt":  "2026-11-11T16:12:04Z",
-    "version":  24,
+    "generatedAt":  "2026-11-11T16:16:58Z",
+    "version":  25,
     "stations":  [
                      {
                          "id":  "solo-rancheras",
@@ -1676,6 +1676,30 @@
                          "enabled":  true,
                          "streams":  [
                                          "https://archi-us.digitalproserver.com/caramelo-fm-los-sauces.aac"
+                                     ]
+                     },
+                     {
+                         "id":  "radio-tropical-stereo-castro",
+                         "name":  "Radio Tropical Stereo Castro",
+                         "style":  "Rancheras, tropical y regional mexicano",
+                         "group":  "campo",
+                         "categoryIds":  [
+                                             "ranchera",
+                                             "musica-mexicana",
+                                             "cumbia"
+                                         ],
+                         "genres":  [
+                                        "ranchera",
+                                        "musica-mexicana",
+                                        "cumbia",
+                                        "tropical"
+                                    ],
+                         "country":  "CL",
+                         "musicFocus":  "high",
+                         "priority":  270,
+                         "enabled":  true,
+                         "streams":  [
+                                         "https://sonic-us.fhost.cl:8178"
                                      ]
                      }
                  ]
