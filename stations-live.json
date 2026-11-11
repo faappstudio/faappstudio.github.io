@@ -108,7 +108,7 @@
                            "id":  "grupera",
                            "name":  "Grupera",
                            "order":  110,
-                           "parent":  "",
+                           "parent":  "musica-mexicana",
                            "aliases":  [
                                            "grupera"
                                        ]
@@ -133,11 +133,11 @@
                        }
                    ],
     "schemaVersion":  1,
-    "catalogVersion":  25,
+    "catalogVersion":  26,
     "minAppVersionCode":  12,
     "refreshAfterMinutes":  30,
-    "generatedAt":  "2026-11-11T16:16:58Z",
-    "version":  25,
+    "generatedAt":  "2026-11-11T18:08:31Z",
+    "version":  26,
     "stations":  [
                      {
                          "id":  "solo-rancheras",
